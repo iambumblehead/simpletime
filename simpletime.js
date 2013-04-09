@@ -1,5 +1,5 @@
 // Filename: simpleTime.js  
-// Timestamp: 2013.04.08-21:16:42 (last modified)  
+// Timestamp: 2013.04.08-23:25:57 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
@@ -197,10 +197,12 @@ var simpleTime = module.exports = (function () {
           m = YMDArr[1],
           d = YMDArr[2],
           date = null;
+
       if (isNum(y) && isNum(m) && isNum(d)) {
         date = new Date();
         date.setFullYear(+y, +m - 1, +d);        
       }
+
       return date;
     },
 
@@ -331,8 +333,7 @@ var simpleTime = module.exports = (function () {
           y = YMDNumArr[0],
           m = YMDNumArr[1],
           d = YMDNumArr[2],
-          ymDate = that.getYMDArrDate([y, m, 1]),
-          ymDays = that.getDaysInMonth(ymDate[0], ymDate[1]);
+          ymDays = that.getDaysInMonth(y, m);
 
       if (d <= 0) {
         d = 1;
@@ -365,6 +366,7 @@ var simpleTime = module.exports = (function () {
     // return a new date object defined from the given date object
     // returned date is defined to the last day of the month
     getLastOfMonth: function (dateObj) {
+    
       return new Date(dateObj.getFullYear(), dateObj.getMonth() + 1, 0);
     },
 
@@ -578,11 +580,11 @@ var simpleTime = module.exports = (function () {
           floor = Math.floor;
 
       return {
-        ms   : floor(ms), 
+        ms   : floor(ms) % 1000, 
         sec  : floor(ms / 1000) % 60,    // ms in sec  : 1000
         min  : floor(ms / 60000) % 60,   // ms in min  : 1000 * 60,
         hour : floor(ms / 3600000) % 24, // ms in hour : 1000 * 60 * 60,
-        day  : floor(ms / 86400000)      // ms in day  : 1000 * 60 * 60 * 24;        
+        day  : floor(ms / 86400000)      // ms in day  : 1000 * 60 * 60 * 24; 
       };
     },
 
@@ -859,10 +861,10 @@ var simpleTime = module.exports = (function () {
         //
         // ex. '01/40/1958' would not pass through here
         if ((finDateObj = that.getYMDArrDate(ymdArr))) {
-          ymdTestArr = that.getDateYMDStrArr(finDateObj);
-          if (+ymdTestArr[0] === +ymdArr[0] &&
-              +ymdTestArr[1] === +ymdArr[1] &&
-              +ymdTestArr[2] === +ymdArr[2]) {
+          ymdTestArr = that.getDateYMDNumArr(finDateObj);
+          if (ymdTestArr[0] === +ymdArr[0] &&
+              ymdTestArr[1] === +ymdArr[1] &&
+              ymdTestArr[2] === +ymdArr[2]) {
             return finDateObj;
           }
         }

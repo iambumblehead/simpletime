@@ -146,6 +146,102 @@ describe("SimpleTime.getMinFromDate", function () {
 
 });
 
+describe("SimpleTime.getMFittedYMDNumArr", function () {
+  var result, resultExpected;
+
+  it("should return a new YMDNumArr with a correct month greater than 12", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+
+    result = SimpleTime.getMFittedYMDNumArr([2013, 13, 3]);
+
+    expect(result[1]).toBe( 12 );
+  });  
+
+  it("should return a new YMDNumArr with a correct month less than 1", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+
+    result = SimpleTime.getMFittedYMDNumArr([2013, 0, 3]);
+
+    expect(result[1]).toBe( 1 );
+  });  
+
+  it("should return a new YMDNumArr with same month if 1 <= month <= 12", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+
+    result = SimpleTime.getMFittedYMDNumArr([2013, 4, 3]);
+
+    expect(result[1]).toBe( 4 );
+  });  
+
+});
+
+describe("SimpleTime.getDFittedYMDNumArr", function () {
+  var result, resultExpected;
+
+  it("should return a new YMDNumArr with a correct day greater than possible days in month", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+
+    result = SimpleTime.getDFittedYMDNumArr([2013, 4, 33]);
+    
+    expect(result[2]).toBe( 30 );
+  });  
+
+  it("should return a new YMDNumArr with a correct day less than 1", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+
+    result = SimpleTime.getDFittedYMDNumArr([2013, 4, 0]);
+
+    expect(result[2]).toBe( 1 );
+  });  
+
+  it("should return a new YMDNumArr with same day if 1 <= month <= possible days of month at year", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+
+    result = SimpleTime.getDFittedYMDNumArr([2013, 4, 3]);
+
+    expect(result[2]).toBe( 3 );
+  });  
+
+});
+
+describe("SimpleTime.getDaysInMonth", function () {
+  var result; 
+
+  it("should return `31` for y = 2013, m = 1", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    result = SimpleTime.getDaysInMonth(2013, 1);
+    expect(result).toBe( 31 );
+  });  
+
+  it("should return `28` for y = 2013, m = 2", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    result = SimpleTime.getDaysInMonth(2013, 2);
+    expect(result).toBe( 28 );
+  });  
+
+  it("should return `31` for y = 2013, m = 3", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    result = SimpleTime.getDaysInMonth(2013, 3);
+    expect(result).toBe( 31 );
+  });  
+
+  it("should return `30` for y = 2013, m = 4", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    result = SimpleTime.getDaysInMonth(2013, 4);
+    expect(result).toBe( 30 );
+  });  
+});
+
 describe("SimpleTime.getDayFromDate", function () {
   var result, resultExpected;
 
@@ -153,9 +249,8 @@ describe("SimpleTime.getDayFromDate", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getMonthFromDate(date, 1);
-
-    expect(result.getDate(), date.getDate() + 1);
+    result = SimpleTime.getDayFromDate(date, 1);
+    expect(result.getDate()).toBe( date.getDate() + 1 );
   });
 
 });
@@ -167,9 +262,9 @@ describe("SimpleTime.getMonthFromDate", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDayFromDate(date, 1);
+    result = SimpleTime.getMonthFromDate(date, 1);
 
-    expect(result.getMonth(), date.getMonth() + 1);
+    expect(result.getMonth()).toBe( date.getMonth() + 1);
   });
 
 });
@@ -443,10 +538,9 @@ describe("SimpleTime.getElapsedTime", function () {
 
     result = SimpleTime.getElapsedTimeObj(oldDate, newDate);
 
-    console.log(result);
-    expect( result.ms === 21074554 && 
-            result.sec === 21074 &&
-            result.min === 351 &&
+    expect( result.ms === 554 && 
+            result.sec === 14 &&
+            result.min === 51 &&
             result.hour === 5 &&
             result.day === 0 ).toBe( true );
   });  
