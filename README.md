@@ -4,7 +4,7 @@ simpleTime
 
 ### OVERVIEW:
 
-simpleTime provides methods for manipulating dates and converting dates to and from unicode format. simpleTime does not provide internationalized dates -use [worldTime][1] for that.
+simpletime provides methods for manipulating dates and converting dates to and from unicode format. simpletime does not provide internationalized dates -use [worldtime][1] for that.
 
 what's good about this script:
 
@@ -13,7 +13,7 @@ what's good about this script:
   - does not depend on a library
 
 [0]: http://www.bumblehead.com                            "bumblehead"
-[1]: http://github.com/iambumblehead/worldTime            "worldTime"
+[1]: http://github.com/iambumblehead/worldtime            "worldtime"
 [2]: http://cldr.unicode.org/translation/date-time        "unicode"
 
 ---------------------------------------------------------
