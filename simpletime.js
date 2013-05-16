@@ -1,5 +1,5 @@
-// Filename: simpleTime.js  
-// Timestamp: 2013.04.08-23:25:57 (last modified)  
+// Filename: simpletime.js  
+// Timestamp: 2013.05.16-13:07:38 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
@@ -206,6 +206,22 @@ var simpleTime = module.exports = (function () {
       return date;
     },
 
+
+
+    // return a date, with given number of hours added
+    // number may be negative so that the returned date will be in the past
+    // 
+    // optNum: +2 goes forward two. -6 go back 6.
+    getSecFromDate: function (dateObj, optNum) {
+      return new Date(dateObj.getTime() + optNum * 1000);
+    },
+
+    getSecFromTodayDate: function (optNum) {
+      return this.getMinFromDate(new Date(), optNum);
+    },
+
+
+
     // return a date, with given number of minutes added
     // number may be negative so that the returned date will be in the past
     // 
@@ -217,6 +233,21 @@ var simpleTime = module.exports = (function () {
     getMinFromTodayDate: function (optNum) {
       return this.getMinFromDate(new Date(), optNum);
     },
+
+
+
+    // return a date, with given number of hours added
+    // number may be negative so that the returned date will be in the past
+    // 
+    // optNum: +2 goes forward two. -6 go back 6.
+    getHourFromDate: function (dateObj, optNum) {
+      return new Date(dateObj.getTime() + optNum * 60 * 60 * 1000);
+    },
+
+    getHourFromTodayDate: function (optNum) {
+      return this.getMinFromDate(new Date(), optNum);
+    },
+
 
     // return a date, with given number of days added
     // number may be negative so that the returned date will be in the past
@@ -566,7 +597,7 @@ var simpleTime = module.exports = (function () {
           };
 
       while (bgnD < endD) {
-        dateArr.push(f(bgnD));
+        dateArr.push(f(new Date(bgnD)));
         bgnD = that.getDayFromDate(bgnD, 1);
       }
 
