@@ -1,5 +1,5 @@
-// Filename: simpletime.js  
-// Timestamp: 2013.05.16-13:07:38 (last modified)  
+// Filename: SimpleTime.js  
+// Timestamp: 2013.05.16-18:07:44 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
@@ -12,7 +12,9 @@
 // international and local date formats are specified using proper unicode 
 // forms http://cldr.unicode.org/translation/date-time
 
-var simpleTime = module.exports = (function () {
+
+var SimpleTime =
+  ((typeof module === 'object') ? module : {}).exports = (function () {
 
   function isNum (n) {
     return !isNaN(parseFloat(n)) ? true : false;    
