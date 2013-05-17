@@ -60,128 +60,128 @@ simpleTime may be downloaded directly or installed through `npm`.
 #### <a id="methods">METHODS:
 
 
- - `isDateObj (dateObj)`  
+ - **isDateObj ( _dateObj_ )**  
    boolean, is the given date object a valid date object?
  
- - `getDateYNum (dateObj)`  
+ - **getDateYNum ( _dateObj_ )**  
    return the year number from the date object  
    ex return values: 2013, 8, 488       
    
- - `getDateYStr (dateObj)`  
+ - **getDateYStr ( _dateObj_ )**  
    return the year string from the date object  
    ex return values: '2013', '0008', '0488'
 
- - `getDateMNum (dateObj)`  
+ - **getDateMNum ( _dateObj_ )**  
    return the month number from the date object  
    ex return values: 12, 10, 7, 4       
    
- - `getDateMStr (dateObj)`  
+ - **getDateMStr ( _dateObj_ )**  
    return the month string from the date object  
    ex return values: '12', '10', '07', '04'
    
- - `getDateDNum (dateObj)`  
+ - **getDateDNum ( _dateObj_ )**  
    return the day number from the date object   
    ex return values: 12, 10, 7, 4, 30
    
- - `getDateDStr (dateObj)`  
+ - **getDateDStr ( _dateObj_ )**  
    return the day string from the date object   
    ex return values: '12', '10', '07', '04', '30'
    
- - `getDateYMDNumArr (dateObj)`  
+ - **getDateYMDNumArr ( _dateObj_ )**  
    return the date as array of numbers
    ex return value: [2013, 5, 5]
    
- - `getDateYMDStrArr (dateObj)`  
+ - **getDateYMDStrArr ( _dateObj_ )**  
    return the date as array of strings
    ex return value: ['2013', '05', '05']   
    
- - `getYMDArrDate (ymdArr)`  
+ - **getYMDArrDate ( _ymdArr_ )**  
    return the array of numbers (or strings numbers) as a date object
 
- - `getMinFromDate (dateObj, optNum)`  
+ - **getMinFromDate ( _dateObj_,  _optNum_ )**  
     return a new date object created from the given date object, with given number of minutes added. number may be negative so that the returned date will be in the past.  
 
    optNum: +2 goes forward two. -6 go back 6.
 
- - `getMinFromTodayDate (optNum)`  
+ - **getMinFromTodayDate ( _optNum_ )**  
    call getMinFromDate using new Date() and the given num value
 
- - `getDayFromDate (dateObj, optNum)`  
+ - **getDayFromDate ( _dateObj_,  _optNum_ )**  
     return a new date object created from the given date object, with given number of days added. number may be negative so that the returned date will be in the past.  
 
    optNum: +2 goes forward two. -6 go back 6.
 
- - `getDayFromTodayDate (optNum)`  
+ - **getDayFromTodayDate ( _optNum_ )**  
    call getDayFromDate using new Date() and the given num value
    
- - `getMonthFromDate (dateObj, optNum)`  
+ - **getMonthFromDate ( _dateObj_,  _optNum_ )**  
     return a new date object created from the given date object, with given number of months added. number may be negative so that the returned date will be in the past.  
 
    optNum: +2 goes forward two. -6 go back 6.
    
- - `getMonthFromTodayDate (optNum)`  
+ - **getMonthFromTodayDate ( _optNum_ )**  
    call getMonthFromDate using new Date() and the given num value
    
- - `getYearFromTodayDate (optNum)`  
+ - **getYearFromTodayDate ( _optNum_ )**  
    return a new date object created from the given date object, with given number of years added. number may be negative so that the returned date will be in the past.  
 
    optNum: +2 goes forward two. -6 go back 6.
    
- - `getYearFromDate (dateObj, optNum)`  
+ - **getYearFromDate ( _dateObj_,  _optNum_ )**  
    call getYearFromDate using new Date() and the given num value
    
- - `getDaysInMonth (mNum, yNum)`
+ - **getDaysInMonth ( _mNum_ , _yNum_ )**
    return number of days that occur in the given month for the given year
 
- - `getMFittedYMDNumArr (YMDNumArr)`   
+ - **getMFittedYMDNumArr ( _YMDNumArr_ )**  
    this method will return a YMDNumArr with a value of 'M' fitted to fall within the range of 1 and 12. 
 
    if M > 12, M is redefined as 12
    if M < 1, M is redefined as 1
    
- - `getDFittedYMDNumArr (YMDNumArr)`   
+ - **getDFittedYMDNumArr ( _YMDNumArr_ )**  
    this method will return a YMDNumArr with a value of 'D' fitted to fall within the range of days that would exist for the month created by Y and M. 
  
    for example, [2013, 4, 32] would be returned as [2013, 4, 30]
     
- - `getTimeBgnMonth (dateObj)`  
+ - **getTimeBgnMonth ( _dateObj_ )**  
    return a date that is defined from the given dateObj, redfined to day 1, hour 0, minute 0, second 0, millisecond 0.
 
- - `getTimeEndMonth (dateObj)`  
+ - **getTimeEndMonth ( _dateObj_ )**  
    return a date that is defined from the given dateObj, redfined to day 1, hour 23, minute 59, second 59, millisecond 999. 
 
- - `getFirstOfMonth (dateObj)`  
+ - **getFirstOfMonth ( _dateObj_ )**  
    return a date that is defined from the given dateObj, redfined to day 1.
 
- - `getLastOfMonth (dateObj)`  
+ - **getLastOfMonth ( _dateObj_ )**  
    return a date that is defined from the given dateObj, redfined to the last day of the month.
 
- - `getTimeBgnDay (dateObj)`  
+ - **getTimeBgnDay ( _dateObj_ )**  
     return a date that is defined from the given dateObj, redfined to hour 0, minute 0, second 0, millisecond 0.
 
- - `getTimeEndDay (dateObj)`  
+ - **getTimeEndDay ( _dateObj_ )**  
    return a date that is defined from the given dateObj, redfined to hour 23, minute 59, second 59, millisecond 999.  
  
- - `isBeforeToday (dateObj)`  
+ - **isBeforeToday ( _dateObj_ )**  
    return a boolean value, is the date object before date.now(), (regardless of hour, minute, second)?
 
- - `parseISO8601 (str)`  
+ - **parseISO8601 ( _str_ )**  
    return a date object from a simple ISO formatted string date, in format yyyy.mm.dd, yyyy/mm/dd, or yyyy-mm-dd
 
- - `parseUSEndian (str)`  
+ - **parseUSEndian ( _str_ )**  
    return a date object from a simple US endian formatted string date, in format  mm.dd.yyyy, mm/dd/yyyy, or mm-dd-yyyy
 
- - `yieldRangeMonthly (bgnDateObj, endDateObj, fn)`  
+ - **yieldRangeMonthly ( _bgnDateObj_, _endDateObj_,  _fn_ )**  
    return a monthly array of dates within the range of bgnDate and endDate. An optional filter function may be provided as the third parameter.
 
    bgnDate will be the first element in the returned array
 
- - `yieldRangeDaily (bgnDateObj, endDateObj, fn)`  
+ - **yieldRangeDaily ( _bgnDateObj_, _endDateObj_,  _fn_ )**  
    return a daily array of dates within the range of bgnDate and endDate. An optional filter function may be provided as the third parameter.
 
    bgnDate will be the first element in the returned array 
 
- - `applyFormatDate (dateObj, format)`  
+ - **applyFormatDate ( _dateObj_ ,  _format_ )**  
    return a date that is formatted according to the given [unicode][3] formatStr
 
    using this date object, new Date(1365222221485), each of the following formats would return a result as shown:
@@ -194,13 +194,13 @@ simpleTime may be downloaded directly or installed through `npm`.
    // 'April 5, 2013 9:23:41 pm 420'
    ```
    
- - `getDateAsISO (dateObj)`  
+ - **getDateAsISO ( _dateObj_ )**  
    return a simplified ISO formatted date from a date object (yyyy/mm/dd)
  
- - `getDateAsUSEndian (dateObj)`  
+ - **getDateAsUSEndian ( _dateObj_ )**  
    return a simplified ISO formatted date from a date object (mm/dd/yyyy) 
    
- - `getElapsedTime (bgnDateObj, endDateObj)`  
+ - **getElapsedTime ( _bgnDateObj_,  _endDateObj_ )**  
    return an object whose properties define the elapsed time between bgnDate and endDate
    
    ```javascript
@@ -217,10 +217,10 @@ simpleTime may be downloaded directly or installed through `npm`.
    // }
    ```
 
- - `getElapsedTimeFormatted (bgnDateObj, endDateObj)`  
+ - **getElapsedTimeFormatted ( _bgnDateObj_,  _endDateObj_ )**  
     return a string composed of the elapsed time between bgnDate and endDate: _min_:_sec_:_ms_ (mm:ss:ms)`
    
- - `isDatesInRange (dateObj1, dateObj2, range)`  
+ - **isDatesInRange ( _dateObj1_, _dateObj2_,  _range_ )**  
    return true if given dates fall within the same range specified by range
 
    type is "month", "year" or "day"
@@ -234,7 +234,7 @@ simpleTime may be downloaded directly or installed through `npm`.
    // true
    ```
 
- - `extractDateFormatted (formattedDateStr, formatStr)`  
+ - **extractDateFormatted ( _formattedDateStr_,  _formatStr_ )**  
    return a date object that is produced from formattedDateStr and the given formatStr
 
    ```javascript
