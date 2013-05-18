@@ -1,5 +1,5 @@
 // Filename: SimpleTime.js  
-// Timestamp: 2013.05.17-20:31:21 (last modified)  
+// Timestamp: 2013.05.17-23:55:13 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
@@ -674,7 +674,7 @@ var SimpleTime =
       var that = this, YMDArr, year = d.getFullYear(),
           isInRange = year >= 0 && year <= 9999, hour,
           localeMethods = that.localeMethods,
-          tzRe = /yyyyy|yyyy|yyy|yy|y|MMMMM|MMMM|MMM|MM|M|ddddd|dddd|ddd|dd|d|hh|h|HH|H|mm|m|ss|s|zzzz|z|a|v/g;
+          tzRe = /yyyyy|yyyy|yyy|yy|y|MMMMM|MMMM|MMM|MM|M|ddddd|dddd|ddd|dd|d|EEEEE|EEEE|EEE|EE|E|hh|h|HH|H|mm|m|ss|s|zzzz|z|a|v/g;
 
       if (!isInRange) {
         //throw RangeError("formatDate: year must be 0000-9999");
@@ -724,6 +724,21 @@ var SimpleTime =
         case "ddddd":
           // day, alpha, narrow, one char
           return that.localeMethods_getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''))[0];
+        case "E":
+          // day, alpha, abbreviated string
+          return localeMethods.getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
+        case "EE":
+          // day, alpha, abbreviated string
+          return localeMethods.getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
+        case "EEE":
+          // day, alpha, abbreviated string
+          return localeMethods.getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
+        case "EEEE":
+          // day, alpha, full string
+          return localeMethods.getNumericDayNameWide(YMDArr[2].replace(/^0/, ''));
+        case "EEEEE":
+          // day, numeric, at least one digit
+          return YMDArr[2].replace(/^0/, '');
         case "h":
           // hour, numeric, at least one digit
           return (d.getHours() % 12) || 12;
