@@ -1,5 +1,5 @@
 // Filename: SimpleTime.js  
-// Timestamp: 2013.05.17-23:55:13 (last modified)  
+// Timestamp: 2013.05.18-14:21:13 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
@@ -726,19 +726,19 @@ var SimpleTime =
           return that.localeMethods_getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''))[0];
         case "E":
           // day, alpha, abbreviated string
-          return localeMethods.getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
+          return that.localeMethods_getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
         case "EE":
           // day, alpha, abbreviated string
-          return localeMethods.getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
+          return that.localeMethods_getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
         case "EEE":
           // day, alpha, abbreviated string
-          return localeMethods.getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
+          return that.localeMethods_getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
         case "EEEE":
           // day, alpha, full string
-          return localeMethods.getNumericDayNameWide(YMDArr[2].replace(/^0/, ''));
+          return that.localeMethods_getNumericDayNameWide(YMDArr[2].replace(/^0/, ''));
         case "EEEEE":
           // day, numeric, at least one digit
-          return YMDArr[2].replace(/^0/, '');
+          return YMDArr[2].replace(/^0*/, '');
         case "h":
           // hour, numeric, at least one digit
           return (d.getHours() % 12) || 12;
