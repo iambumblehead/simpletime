@@ -1,5 +1,5 @@
 // Filename: SimpleTime.js  
-// Timestamp: 2013.05.18-14:21:13 (last modified)  
+// Timestamp: 2013.05.18-15:02:22 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
@@ -674,7 +674,7 @@ var SimpleTime =
       var that = this, YMDArr, year = d.getFullYear(),
           isInRange = year >= 0 && year <= 9999, hour,
           localeMethods = that.localeMethods,
-          tzRe = /yyyyy|yyyy|yyy|yy|y|MMMMM|MMMM|MMM|MM|M|ddddd|dddd|ddd|dd|d|EEEEE|EEEE|EEE|EE|E|hh|h|HH|H|mm|m|ss|s|zzzz|z|a|v/g;
+          tzRe = /'[^']*'|"[^"]*"|yyyyy|yyyy|yyy|yy|y|MMMMM|MMMM|MMM|MM|M|ddddd|dddd|ddd|dd|d|EEEEE|EEEE|EEE|EE|E|hh|h|HH|H|mm|m|ss|s|zzzz|z|a|v/g;
 
       if (!isInRange) {
         //throw RangeError("formatDate: year must be 0000-9999");
@@ -777,7 +777,7 @@ var SimpleTime =
           // timezone, numeric
           return d.getTimezoneOffset();
         default:
-          return '';
+          return match;
         }
 
       });
