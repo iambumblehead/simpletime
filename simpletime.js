@@ -1,5 +1,5 @@
 // Filename: SimpleTime.js  
-// Timestamp: 2013.05.16-18:07:44 (last modified)  
+// Timestamp: 2013.05.17-20:31:21 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
@@ -29,8 +29,7 @@ var SimpleTime =
   return {
     // used by worldTime script
     // localeMap : {},
-    localeMethods : {
-      getDateSymbolsMonthAbbrev : function () {
+    localeMethods_getDateSymbolsMonthAbbrev : function () {
         return {
           1:"Jan",
           2:"Feb",
@@ -45,8 +44,8 @@ var SimpleTime =
           11:"Nov",
           12:"Dec"
         };      
-      },
-      getDateSymbolsMonthWide : function () {
+    },
+    localeMethods_getDateSymbolsMonthWide : function () {
         return {
           1:"January",
           2:"February",
@@ -62,7 +61,7 @@ var SimpleTime =
           12:"December"
         };
       },
-      getDateSymbolsMonthNarrow : function () {
+      localeMethods_getDateSymbolsMonthNarrow : function () {
         return {
           1:"J",
           2:"F",
@@ -78,7 +77,7 @@ var SimpleTime =
           12:"D"
         };
       },
-      getDateSymbolsDayAbbrev : function () {
+      localeMethods_getDateSymbolsDayAbbrev : function () {
         return [
           "sun", 
           "mon", 
@@ -89,7 +88,7 @@ var SimpleTime =
           "sat"
         ];      
       },
-      getDateSymbolsDayWide : function () {
+      localeMethods_getDateSymbolsDayWide : function () {
         return [
           "Sunday",
           "Monday",
@@ -102,25 +101,24 @@ var SimpleTime =
       },
 
       // abbreviated month name, ex. `Jan` or `Dec`
-      getNumericMonthNameAbbrev : function (monthNum) {
-        return this.getDateSymbolsMonthAbbrev()[monthNum];
+      localeMethods_getNumericMonthNameAbbrev : function (monthNum) {
+        return this.localeMethods_getDateSymbolsMonthAbbrev()[monthNum];
       },
 
       // wide month name, ex. `January` or `December`
-      getNumericMonthNameWide : function (monthNum) {
-        return this.getDateSymbolsMonthWide()[monthNum];
+      localeMethods_getNumericMonthNameWide : function (monthNum) {
+        return this.localeMethods_getDateSymbolsMonthWide()[monthNum];
       },
 
       // abbreviated day name, ex. `sun` or `thu`      
-      getNumericDayNameAbbrev : function (dayNum) {
-        return this.getDateSymbolsDayAbbrev()[dayNum];
+      localeMethods_getNumericDayNameAbbrev : function (dayNum) {
+        return this.localeMethods_getDateSymbolsDayAbbrev()[dayNum];
       },
 
       // wide day name, ex. `Sunday` or `Thursday`      
-      getNumericDayNameWide : function (dayNum) {
-        return this.getDateSymbolsDayWide()[dayNum];
-      }
-    },
+      localeMethods_getNumericDayNameWide : function (dayNum) {
+        return this.localeMethods_getDateSymbolsDayWide()[dayNum];
+      },
 
     
     isDateObj: function (dateObj) {
@@ -704,13 +702,13 @@ var SimpleTime =
           return YMDArr[1];
         case "MMM":
           // month, alpha, abbreviated string
-          return localeMethods.getNumericMonthNameAbbrev(YMDArr[1].replace(/^0/, ''));
+          return that.localeMethods_getNumericMonthNameAbbrev(YMDArr[1].replace(/^0/, ''));
         case "MMMM":
           // month, alpha, full string
-          return localeMethods.getNumericMonthNameWide(YMDArr[1].replace(/^0/, ''));
+          return that.localeMethods_getNumericMonthNameWide(YMDArr[1].replace(/^0/, ''));
         case "MMMMM":
           // month, alpha, narrow, one char
-          return localeMethods.getNumericMonthNameAbbrev(YMDArr[1].replace(/^0/, ''))[0];
+          return that.localeMethods_getNumericMonthNameAbbrev(YMDArr[1].replace(/^0/, ''))[0];
         case "d":
           // day, numeric, at least one digit
           return YMDArr[2].replace(/^0/, '');
@@ -719,13 +717,13 @@ var SimpleTime =
           return YMDArr[2];
         case "ddd":
           // day, alpha, abbreviated string
-          return localeMethods.getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
+          return that.localeMethods_getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''));
         case "dddd":
           // day, alpha, full string
-          return localeMethods.getNumericDayNameWide(YMDArr[2].replace(/^0/, ''));
+          return that.localeMethods_getNumericDayNameWide(YMDArr[2].replace(/^0/, ''));
         case "ddddd":
           // day, alpha, narrow, one char
-          return localeMethods.getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''))[0];
+          return that.localeMethods_getNumericDayNameAbbrev(YMDArr[2].replace(/^0/, ''))[0];
         case "h":
           // hour, numeric, at least one digit
           return (d.getHours() % 12) || 12;
@@ -835,13 +833,13 @@ var SimpleTime =
             }
           } else if (token === "MMM") {
             // month, alpha, abbreviated string
-            ymdArr[1] = getAsISO(tokenItem, that.localeMethods.getDateSymbolsMonthAbbrev());
+            ymdArr[1] = getAsISO(tokenItem, that.localeMethods_getDateSymbolsMonthAbbrev());
           } else if (token === "MMMM") {
             // month, alpha, full string
-            ymdArr[1] = getAsISO(tokenItem, that.localeMethods.getDateSymbolsMonthWide());
+            ymdArr[1] = getAsISO(tokenItem, that.localeMethods_getDateSymbolsMonthWide());
           } else if (token === "MMMMM") {
             // month, alpha, narrow, one char
-            ymdArr[1] = getAsISO(tokenItem, that.localeMethods.getDateSymbolsMonthNarrow());
+            ymdArr[1] = getAsISO(tokenItem, that.localeMethods_getDateSymbolsMonthNarrow());
           }
         } else if (token.match(/ddddd|dddd|ddd|dd|d/)) {
           if (token === "d" && isNum(tokenItem)) {
