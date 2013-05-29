@@ -527,6 +527,86 @@ describe("SimpleTime.applyFormatDate", function () {
     resultExpected = '4/5/2013 9:23 pm';
     expect( result ).toBe( resultExpected );
   });
+
+  it("should return a correctly formatted date from date object, `dd-MM-yy`", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    var dateFormatShort = "dd-MM-yy";
+    
+    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    resultExpected = '05-04-13';
+    expect( result ).toBe( resultExpected );
+  });
+
+  it("should return a correctly formatted date from date object, `M/d/yy`", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    var dateFormatShort = "M/d/yy";
+    
+    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    resultExpected = '4/5/13';
+    expect( result ).toBe( resultExpected );
+  });
+
+  it("should return a correctly formatted date from date object, `dd-MM-yyyy`", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    var dateFormatShort = "dd-MM-yyyy";
+    
+    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    resultExpected = '05-04-2013';
+    expect( result ).toBe( resultExpected );
+  });
+
+  it("should return a correctly formatted date from date object, `MMM d, y`", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    var dateFormatShort = "MMM d, y";
+    
+    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    resultExpected = 'Apr 5, 2013';
+    expect( result ).toBe( resultExpected );
+  });
+
+  it("should return a correctly formatted date from date object, `MMMM d, y`", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    var dateFormatShort = "MMMM d, y";
+    
+    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    resultExpected = 'April 5, 2013';
+    expect( result ).toBe( resultExpected );
+  });
+
+  it("should return a correctly formatted date from date object, `5 'de' April 'de' 2013`", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    var dateFormatShort = "d 'de' MMMM 'de' y";
+    
+    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    resultExpected = "5 'de' April 'de' 2013";
+    expect( result ).toBe( resultExpected );
+  });
+
+  it("should return a correctly formatted date from date object, `EEEE, d 'de' MMMM 'de' y`", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    var dateFormatShort = "EEEE, d 'de' MMMM 'de' y";
+    
+    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    resultExpected = "Friday, 5 'de' April 'de' 2013";
+    expect( result ).toBe( resultExpected );
+  });
+
+  it("should return a correctly formatted date from date object, `EEEE, MMMM d, y`", function () {
+    //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+    var date = new Date(1365222221485);
+    var dateFormatShort = "EEEE, MMMM d, y";
+    
+    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    resultExpected = "Friday, April 5, 2013";
+    expect( result ).toBe( resultExpected );
+  });
 });
 
 describe("SimpleTime.getElapsedTime", function () {
