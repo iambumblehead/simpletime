@@ -1,12 +1,12 @@
 // Filename: simpletime.js  
-// Timestamp: 2013.09.15-19:06:15 (last modified)  
+// Timestamp: 2013.09.15-20:47:27 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
 // parts of this based on work found in comp.lang.javascript faq
 //
 // simpleTime namespace is defined here with a property named 'localeMethods'. 
-// localeMethods are rederined by worldTime, which uses this script to provide
+// localeMethods are redefined by worldTime, which uses this script to provide
 // internationalized time formatted methods.
 //
 // international and local date formats are specified using proper unicode 
