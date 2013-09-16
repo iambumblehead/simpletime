@@ -1,5 +1,5 @@
-// Filename: SimpleTime.js  
-// Timestamp: 2013.05.18-15:02:22 (last modified)  
+// Filename: simpletime.js  
+// Timestamp: 2013.09.15-19:06:15 (last modified)  
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
@@ -13,7 +13,7 @@
 // forms http://cldr.unicode.org/translation/date-time
 
 
-var SimpleTime =
+var simpletime =
   ((typeof module === 'object') ? module : {}).exports = (function () {
 
   function isNum (n) {
