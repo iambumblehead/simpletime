@@ -13,8 +13,7 @@
 // forms http://cldr.unicode.org/translation/date-time
 
 
-var simpletime =
-  ((typeof module === 'object') ? module : {}).exports = (function () {
+var simpletime = module.exports = (function () {
 
   function isNum (n) {
     return !isNaN(parseFloat(n)) ? true : false;    
