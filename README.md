@@ -4,9 +4,7 @@ simpleTime
 
 ### overview
 
-simpletime functions manipulatie dates and convert dates to and from unicode format. It does not provide internationalized dates -use [worldtime][1] for that.
-
-what's good about this script:
+simpletime functions manipulatie dates and convert dates to and from unicode format. i18n unsupported ([worldtime][1]).
 
  * format and unformat dates using unicode [forms][2]
  * create and use `YMDArr` objects to simplify time manipulation
