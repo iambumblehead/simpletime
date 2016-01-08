@@ -1,5 +1,5 @@
 // Filename: simpletime.js  
-// Timestamp: 2013.09.15-20:47:27 (last modified)  
+// Timestamp: 2016.01.07-22:38:57 (last modified)
 // Author(s): Bumblehead (www.bumblehead.com)  
 //
 // 
@@ -16,13 +16,7 @@
 var simpletime = module.exports = (function () {
 
   function isNum (n) {
-    return !isNaN(parseFloat(n)) ? true : false;    
-  }
-
-  if (typeof Date.now === 'undefined') {
-    Date.now = function () {
-      return (new Date()).getTime();
-    };
+    return !isNaN(parseFloat(n));
   }
 
   return {
@@ -333,8 +327,8 @@ var simpletime = module.exports = (function () {
 
     // http://stackoverflow.com/questions/1184334/get-number-days-in-a-specified-month-using-javascript
     // return number of days that occur in the given month for the given year
-    getDaysInMonth : function (mNum ,yNum) {
-      return new Date(mNum, yNum, 0).getDate();
+    getDaysInMonth : function (yNum, mNum) {
+      return new Date(yNum, mNum, 0).getDate();
     },
 
     // if M is greater than 12, a value of 12 (representing M) is returned
@@ -420,11 +414,12 @@ var simpletime = module.exports = (function () {
           }
         }
       }
+      return false;
     },
 
     // return true if the date occurs `before` today's date
     isDateBeforeToday: function (dateObj) {
-      this.isDateBeforeDate(dateObj, new Date());
+      return this.isDateBeforeDate(dateObj, new Date());
     },
 
     // return a new date object that has time of the given dateObj, defined to 
@@ -809,9 +804,9 @@ var simpletime = module.exports = (function () {
         return '';
       }
 
-      for (x = formatTokens.length; x--;) {
-        token = formatTokens[x];
+      formatTokens.map(function (token, x) {
         tokenItem = dStrTokens[x];
+
         if (token.match(/yyyyy|yyyy|yyy|yy|y/)) {
           if (token === "y" && isNum(tokenItem)) {
             // year, numeric, full digit year, 1 to 4 digits
@@ -864,18 +859,17 @@ var simpletime = module.exports = (function () {
           } else if (token === "dd" && isNum(tokenItem)) {
             // day, numeric, at least two digits, 0-padding
             if (tokenItem.match(/^\d\d?$/)) {
-              ymdArr[2] = tokenItem + '';              
+             ymdArr[2] = tokenItem + '';              
             }
-            // following the standard here is too strict here.
-            //  } else if (token === "ddd") {
-            //    // day, alpha, abbreviated string
-            //    ymdArr[1] = getAsISO(tokenItem, dateSymbols.days.format.abbreviated);
-            //  } else if (token === "dddd") {
-            //    // day, alpha, full string
-            //    ymdArr[1] = getAsISO(tokenItem, dateSymbols.days.format.wide);
-            //  } else if (token === "ddddd") {
-            //   // day, alpha, narrow, one char
-            //   ymdArr[1] = getAsISO(tokenItem, dateSymbols.days.format.narrow);
+          } else if (token === "ddd") {
+            // day, alpha, abbreviated string
+            ymdArr[2] = getAsISO(tokenItem, that.localeMethods_getDateSymbolsDayAbbrev());
+          } else if (token === "dddd") {
+            // day, alpha, full string
+            ymdArr[2] = getAsISO(tokenItem, that.localeMethods_getDateSymbolsDayWide());
+          } else if (token === "ddddd") {
+            // day, alpha, narrow, one char
+            ymdArr[2] = getAsISO(tokenItem, that.localeMethods_getDateSymbolsDayNarrow());
           }
         } else if (token.match(/h|H/) && isNum(tokenItem)) {
           //hour. h for 12 hour, H for 24.
@@ -897,7 +891,7 @@ var simpletime = module.exports = (function () {
           // Pacific Time, Paris Time
           ymdArr[7] = tokenItem + '';
         }
-      }
+      });
       if (ymdArr[0] && ymdArr[1] && ymdArr[2]) {
         // if `m` or `d` values are too large or small, dateObj is still
         // generated as per specificiation `15.9 Date Objects`

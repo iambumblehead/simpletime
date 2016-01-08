@@ -1,24 +1,28 @@
-var SimpleTime = require('../simpletime');
+// Filename: simpletime.spec.js  
+// Timestamp: 2016.01.07-22:33:04 (last modified)
+// Author(s): bumblehead <chris@bumblehead.com>
+
+var simpletime = require('../simpletime');
 
 
-describe("SimpleTime.isDateObj", function () {
+describe("simpletime.isDateObj", function () {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   var result, resultExpected;
 
   it("should return false if input is null", function () {
-    result = SimpleTime.isDateObj(null);
+    result = simpletime.isDateObj(null);
 
     expect( result ).toBe( false );
   });
 
   it("should return false if input is undefined", function () {
-    result = SimpleTime.isDateObj(null);
+    result = simpletime.isDateObj(null);
 
     expect( result ).toBe( false );
   });
 
   it("should return false if input is {}", function () {
-    result = SimpleTime.isDateObj({});
+    result = simpletime.isDateObj({});
 
     expect( result ).toBe( false );
   });
@@ -27,42 +31,42 @@ describe("SimpleTime.isDateObj", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.isDateObj(date);
+    result = simpletime.isDateObj(date);
 
     expect( result ).toBe( true );
   });
 });
 
 
-describe("SimpleTime.getDateYStr", function () {
+describe("simpletime.getDateYStr", function () {
   var result, resultExpected;
 
   it("should return the correct year number", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDateYStr(date);
+    result = simpletime.getDateYStr(date);
     resultExpected = '2013';
 
     expect( result ).toBe( resultExpected );
   });
 });
 
-describe("SimpleTime.getDateMStr", function () {
+describe("simpletime.getDateMStr", function () {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   var result, resultExpected;
 
   it("should return the correct month number", function () {
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDateMStr(date);
+    result = simpletime.getDateMStr(date);
     resultExpected = '04';
 
     expect( result ).toBe( resultExpected );
   });
 });
 
-describe("SimpleTime.getDateDStr", function () {
+describe("simpletime.getDateDStr", function () {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   var result, resultExpected;
 
@@ -70,7 +74,7 @@ describe("SimpleTime.getDateDStr", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDateDStr(date);
+    result = simpletime.getDateDStr(date);
     resultExpected = '05';
 
     expect( result ).toBe( resultExpected );
@@ -79,7 +83,7 @@ describe("SimpleTime.getDateDStr", function () {
 
 
 
-describe("SimpleTime.getDateYMDStrArr", function () {
+describe("simpletime.getDateYMDStrArr", function () {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   var result, resultExpected;
 
@@ -87,7 +91,7 @@ describe("SimpleTime.getDateYMDStrArr", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDateYMDStrArr(date);
+    result = simpletime.getDateYMDStrArr(date);
 
     expect( result &&
             result[0] === '2013' && 
@@ -96,7 +100,7 @@ describe("SimpleTime.getDateYMDStrArr", function () {
   });
 });
 
-describe("SimpleTime.getDateYMDNumArr", function () {
+describe("simpletime.getDateYMDNumArr", function () {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   var result, resultExpected;
 
@@ -104,7 +108,7 @@ describe("SimpleTime.getDateYMDNumArr", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDateYMDNumArr(date);
+    result = simpletime.getDateYMDNumArr(date);
 
     expect( result &&
             result[0] === 2013 && 
@@ -114,7 +118,7 @@ describe("SimpleTime.getDateYMDNumArr", function () {
 });
 
 
-describe("SimpleTime.getDateYMDArrDate", function () {
+describe("simpletime.getDateYMDArrDate", function () {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   var result, resultExpected;
 
@@ -122,7 +126,7 @@ describe("SimpleTime.getDateYMDArrDate", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getYMDArrDate([2013, 4, 5]);
+    result = simpletime.getYMDArrDate([2013, 4, 5]);
     resultExpected = [2013, 4, 5];
 
     expect( result &&
@@ -132,28 +136,28 @@ describe("SimpleTime.getDateYMDArrDate", function () {
   });
 });
 
-describe("SimpleTime.getMinFromDate", function () {
+describe("simpletime.getMinFromDate", function () {
   var result, resultExpected;
 
   it("should return a new date one minute ahead of the given date object", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getMinFromDate(date, 1);
+    result = simpletime.getMinFromDate(date, 1);
 
     expect(result.getMinutes(), date.getMinutes() + 1);
   });
 
 });
 
-describe("SimpleTime.getMFittedYMDNumArr", function () {
+describe("simpletime.getMFittedYMDNumArr", function () {
   var result, resultExpected;
 
   it("should return a new YMDNumArr with a correct month greater than 12", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getMFittedYMDNumArr([2013, 13, 3]);
+    result = simpletime.getMFittedYMDNumArr([2013, 13, 3]);
 
     expect(result[1]).toBe( 12 );
   });  
@@ -162,7 +166,7 @@ describe("SimpleTime.getMFittedYMDNumArr", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getMFittedYMDNumArr([2013, 0, 3]);
+    result = simpletime.getMFittedYMDNumArr([2013, 0, 3]);
 
     expect(result[1]).toBe( 1 );
   });  
@@ -171,21 +175,21 @@ describe("SimpleTime.getMFittedYMDNumArr", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getMFittedYMDNumArr([2013, 4, 3]);
+    result = simpletime.getMFittedYMDNumArr([2013, 4, 3]);
 
     expect(result[1]).toBe( 4 );
   });  
 
 });
 
-describe("SimpleTime.getDFittedYMDNumArr", function () {
+describe("simpletime.getDFittedYMDNumArr", function () {
   var result, resultExpected;
 
   it("should return a new YMDNumArr with a correct day greater than possible days in month", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDFittedYMDNumArr([2013, 4, 33]);
+    result = simpletime.getDFittedYMDNumArr([2013, 4, 33]);
     
     expect(result[2]).toBe( 30 );
   });  
@@ -194,7 +198,7 @@ describe("SimpleTime.getDFittedYMDNumArr", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDFittedYMDNumArr([2013, 4, 0]);
+    result = simpletime.getDFittedYMDNumArr([2013, 4, 0]);
 
     expect(result[2]).toBe( 1 );
   });  
@@ -203,80 +207,80 @@ describe("SimpleTime.getDFittedYMDNumArr", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDFittedYMDNumArr([2013, 4, 3]);
+    result = simpletime.getDFittedYMDNumArr([2013, 4, 3]);
 
     expect(result[2]).toBe( 3 );
   });  
 
 });
 
-describe("SimpleTime.getDaysInMonth", function () {
+describe("simpletime.getDaysInMonth", function () {
   var result; 
 
   it("should return `31` for y = 2013, m = 1", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
-    result = SimpleTime.getDaysInMonth(2013, 1);
+    result = simpletime.getDaysInMonth(2013, 1);
     expect(result).toBe( 31 );
   });  
 
   it("should return `28` for y = 2013, m = 2", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
-    result = SimpleTime.getDaysInMonth(2013, 2);
+    result = simpletime.getDaysInMonth(2013, 2);
     expect(result).toBe( 28 );
   });  
 
   it("should return `31` for y = 2013, m = 3", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
-    result = SimpleTime.getDaysInMonth(2013, 3);
+    result = simpletime.getDaysInMonth(2013, 3);
     expect(result).toBe( 31 );
   });  
 
   it("should return `30` for y = 2013, m = 4", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
-    result = SimpleTime.getDaysInMonth(2013, 4);
+    result = simpletime.getDaysInMonth(2013, 4);
     expect(result).toBe( 30 );
   });  
 });
 
-describe("SimpleTime.getDayFromDate", function () {
+describe("simpletime.getDayFromDate", function () {
   var result, resultExpected;
 
   it("should return a new date one day ahead of the given date object", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDayFromDate(date, 1);
+    result = simpletime.getDayFromDate(date, 1);
     expect(result.getDate()).toBe( date.getDate() + 1 );
   });
 
 });
 
-describe("SimpleTime.getMonthFromDate", function () {
+describe("simpletime.getMonthFromDate", function () {
   var result, resultExpected;
 
   it("should return a new date one month ahead of the given date object", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getMonthFromDate(date, 1);
+    result = simpletime.getMonthFromDate(date, 1);
 
     expect(result.getMonth()).toBe( date.getMonth() + 1);
   });
 
 });
 
-describe("SimpleTime.getYearFromDate", function () {
+describe("simpletime.getYearFromDate", function () {
   var result, resultExpected;
 
   it("should return a new date one year ahead of the given date object", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getYearFromDate(date, 1);
+    result = simpletime.getYearFromDate(date, 1);
 
     expect(result.getFullYear(), date.getFullYear() + 1);
   });
@@ -284,7 +288,7 @@ describe("SimpleTime.getYearFromDate", function () {
 });
 
 
-describe("SimpleTime.isDateBeforeDate", function () {
+describe("simpletime.isDateBeforeDate", function () {
   var result, resultExpected;
 
   it("should return true for a date that is before a date", function () {
@@ -293,7 +297,7 @@ describe("SimpleTime.isDateBeforeDate", function () {
     //Sat Apr 06 2013 22:55:14 GMT-0700 (PDT)
     var newDate = new Date(1365314114343);
 
-    result = SimpleTime.isDateBeforeDate(oldDate, newDate);
+    result = simpletime.isDateBeforeDate(oldDate, newDate);
     resultExpected = true;
 
     expect(result, resultExpected);
@@ -305,7 +309,7 @@ describe("SimpleTime.isDateBeforeDate", function () {
     //Sat Apr 06 2013 22:55:14 GMT-0700 (PDT)
     var newDate = new Date(1365314114343);
 
-    result = SimpleTime.isDateBeforeDate(newDate, oldDate);
+    result = simpletime.isDateBeforeDate(newDate, oldDate);
     resultExpected = false;
 
     expect(result, resultExpected);
@@ -313,14 +317,14 @@ describe("SimpleTime.isDateBeforeDate", function () {
 
 });
 
-describe("SimpleTime.getTimeBgnMonth", function () {
+describe("simpletime.getTimeBgnMonth", function () {
   var result, resultExpected;
 
   it("should return true for a date defined to the beginning of the month", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getTimeBgnMonth(date);
+    result = simpletime.getTimeBgnMonth(date);
 
     expect( result &&
             result.getFullYear() === date.getFullYear() && 
@@ -334,20 +338,20 @@ describe("SimpleTime.getTimeBgnMonth", function () {
   });
 });
 
-describe("SimpleTime.getTimeEndMonth", function () {
+describe("simpletime.getTimeEndMonth", function () {
   var result, resultExpected;
 
   it("should return true for a date defined to the end of the month", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getTimeEndMonth(date);
+    result = simpletime.getTimeEndMonth(date);
 
 
     expect( result &&
             result.getFullYear() === date.getFullYear() && 
             result.getMonth() === date.getMonth() &&
-            result.getDate() === SimpleTime.getLastOfMonth(date).getDate() &&
+            result.getDate() === simpletime.getLastOfMonth(date).getDate() &&
 
             result.getHours() === 23 &&          
             result.getMinutes() === 59 &&          
@@ -356,14 +360,14 @@ describe("SimpleTime.getTimeEndMonth", function () {
   });
 });
 
-describe("SimpleTime.getTimeBgnDay", function () {
+describe("simpletime.getTimeBgnDay", function () {
   var result, resultExpected;
 
   it("should return true for a date defined to the beginning of the day", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getTimeBgnDay(date);
+    result = simpletime.getTimeBgnDay(date);
 
     expect( result &&
             result.getFullYear() === date.getFullYear() && 
@@ -380,7 +384,7 @@ describe("SimpleTime.getTimeBgnDay", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getTimeBgnDay(date);
+    result = simpletime.getTimeBgnDay(date);
 
 
     expect( result &&
@@ -391,14 +395,14 @@ describe("SimpleTime.getTimeBgnDay", function () {
   });
 });
 
-describe("SimpleTime.parseISO8601", function () {
+describe("simpletime.parseISO8601", function () {
   var result, resultExpected;
 
   it("should return a date from a simplified ISO formatted date, `2013/12/20`", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.parseISO8601('2013/12/20');
+    result = simpletime.parseISO8601('2013/12/20');
 
     expect( result &&
             result.getFullYear() === 2013 && 
@@ -407,14 +411,14 @@ describe("SimpleTime.parseISO8601", function () {
   });
 });
 
-describe("SimpleTime.parseUSEndian", function () {
+describe("simpletime.parseUSEndian", function () {
   var result, resultExpected;
 
   it("should return a date from a simplified US Endian formatted date, `12/20/2013`", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.parseUSEndian('12/20/2013');
+    result = simpletime.parseUSEndian('12/20/2013');
 
     expect( result &&
             result.getFullYear() === 2013 && 
@@ -423,33 +427,33 @@ describe("SimpleTime.parseUSEndian", function () {
   });
 });
 
-describe("SimpleTime.getDateAsISO", function () {
+describe("simpletime.getDateAsISO", function () {
   var result, resultExpected;
 
   it("should return a simplified ISO formatted date from a date, `2013/4/5`", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDateAsISO(date);
+    result = simpletime.getDateAsISO(date);
 
     expect( result ).toBe( '2013/04/05' );
   });
 });
 
-describe("SimpleTime.getDateUSEndian", function () {
+describe("simpletime.getDateUSEndian", function () {
   var result, resultExpected;
 
   it("should return a simplified US Endian formatted date from a date, `4/5/2013`", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var date = new Date(1365222221485);
 
-    result = SimpleTime.getDateAsUSEndian(date);
+    result = simpletime.getDateAsUSEndian(date);
 
     expect( result ).toBe( '04/05/2013' );
   });
 });
 
-describe("SimpleTime.yieldRangeMonthly", function () {
+describe("simpletime.yieldRangeMonthly", function () {
   var result, resultExpected;
 
   // first date will be 3/3/2010
@@ -459,15 +463,15 @@ describe("SimpleTime.yieldRangeMonthly", function () {
     //Wed Mar 03 2010 17:32:44 GMT-0800 (PST)
     var oldDate = new Date(1267666364512);
 
-    result = SimpleTime.yieldRangeMonthly(oldDate, date);
+    result = simpletime.yieldRangeMonthly(oldDate, date);
     expect( result && result.length === 38 ).toBe( true );
   });
 });
 
-describe("SimpleTime.yieldRangeDaily", function () {
+describe("simpletime.yieldRangeDaily", function () {
   var result, resultExpected;
 
-  /*
+
   // first date will be 3/3/2010
   it("should return 3 dates twixt `4/5/2013, 21:23` and `4/7/2013, 17:40`", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
@@ -475,9 +479,9 @@ describe("SimpleTime.yieldRangeDaily", function () {
     //Sun Apr 07 2013 17:40:17 GMT-0700 (PDT)
     var newDate = new Date(1365381617189);
 
-    result = SimpleTime.yieldRangeDaily(oldDate, newDate);
+    result = simpletime.yieldRangeDaily(oldDate, newDate);
 
-    expect( result.length ).toBe( 3 );
+    expect( result.length ).toBe( 2 );
   });
 
   // first date will be 3/3/2010
@@ -487,15 +491,15 @@ describe("SimpleTime.yieldRangeDaily", function () {
     //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
     var newDate = new Date(1365404399998);
 
-    result = SimpleTime.yieldRangeDaily(oldDate, newDate);
+    result = simpletime.yieldRangeDaily(oldDate, newDate);
     
     expect( result.length ).toBe( 3 );
   });
-   */
+
 });
 
 
-describe("SimpleTime.applyFormatDate", function () {
+describe("simpletime.applyFormatDate", function () {
   var result, resultExpected;
 
   it("should return a correctly formatted date from date object, full", function () {
@@ -503,7 +507,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatLong = "MMMM d, y h:mm:ss a z";
 
-    result = SimpleTime.applyFormatDate(date, dateFormatLong);
+    result = simpletime.applyFormatDate(date, dateFormatLong);
     resultExpected = 'April 5, 2013 9:23:41 pm 420';
     expect( result ).toBe(resultExpected);
   });
@@ -513,7 +517,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatMedium = "MMM d, y h:mm:ss a";
 
-    result = SimpleTime.applyFormatDate(date, dateFormatMedium);
+    result = simpletime.applyFormatDate(date, dateFormatMedium);
     resultExpected = 'Apr 5, 2013 9:23:41 pm';
     expect( result ).toBe( resultExpected );
   });
@@ -523,7 +527,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatShort = "M/d/yyyy h:mm a";
     
-    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    result = simpletime.applyFormatDate(date, dateFormatShort);    
     resultExpected = '4/5/2013 9:23 pm';
     expect( result ).toBe( resultExpected );
   });
@@ -533,7 +537,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatShort = "dd-MM-yy";
     
-    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    result = simpletime.applyFormatDate(date, dateFormatShort);    
     resultExpected = '05-04-13';
     expect( result ).toBe( resultExpected );
   });
@@ -543,7 +547,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatShort = "M/d/yy";
     
-    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    result = simpletime.applyFormatDate(date, dateFormatShort);    
     resultExpected = '4/5/13';
     expect( result ).toBe( resultExpected );
   });
@@ -553,7 +557,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatShort = "dd-MM-yyyy";
     
-    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    result = simpletime.applyFormatDate(date, dateFormatShort);    
     resultExpected = '05-04-2013';
     expect( result ).toBe( resultExpected );
   });
@@ -563,7 +567,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatShort = "MMM d, y";
     
-    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    result = simpletime.applyFormatDate(date, dateFormatShort);    
     resultExpected = 'Apr 5, 2013';
     expect( result ).toBe( resultExpected );
   });
@@ -573,7 +577,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatShort = "MMMM d, y";
     
-    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    result = simpletime.applyFormatDate(date, dateFormatShort);    
     resultExpected = 'April 5, 2013';
     expect( result ).toBe( resultExpected );
   });
@@ -583,7 +587,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatShort = "d 'de' MMMM 'de' y";
     
-    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    result = simpletime.applyFormatDate(date, dateFormatShort);    
     resultExpected = "5 'de' April 'de' 2013";
     expect( result ).toBe( resultExpected );
   });
@@ -593,7 +597,7 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatShort = "EEEE, d 'de' MMMM 'de' y";
     
-    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    result = simpletime.applyFormatDate(date, dateFormatShort);    
     resultExpected = "Friday, 5 'de' April 'de' 2013";
     expect( result ).toBe( resultExpected );
   });
@@ -603,13 +607,13 @@ describe("SimpleTime.applyFormatDate", function () {
     var date = new Date(1365222221485);
     var dateFormatShort = "EEEE, MMMM d, y";
     
-    result = SimpleTime.applyFormatDate(date, dateFormatShort);    
+    result = simpletime.applyFormatDate(date, dateFormatShort);    
     resultExpected = "Friday, April 5, 2013";
     expect( result ).toBe( resultExpected );
   });
 });
 
-describe("SimpleTime.getElapsedTime", function () {
+describe("simpletime.getElapsedTime", function () {
   var result, resultExpected;
 
   it("should return an object whose properties describe elapsed time, ", function () {
@@ -618,7 +622,7 @@ describe("SimpleTime.getElapsedTime", function () {
     //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
     var newDate = new Date(1365404399998);
 
-    result = SimpleTime.getElapsedTimeObj(oldDate, newDate);
+    result = simpletime.getElapsedTimeObj(oldDate, newDate);
 
     expect( result.ms === 554 && 
             result.sec === 14 &&
@@ -628,7 +632,7 @@ describe("SimpleTime.getElapsedTime", function () {
   });  
 });
 
-describe("SimpleTime.isDatesInRange", function () {
+describe("simpletime.isDatesInRange", function () {
   var result, resultExpected;
 
   
@@ -638,7 +642,7 @@ describe("SimpleTime.isDatesInRange", function () {
     //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
     var newDate = new Date(1365404399998);  
 
-    result = SimpleTime.isDatesInRange(oldDate, newDate, 'day');
+    result = simpletime.isDatesInRange(oldDate, newDate, 'day');
     
     expect( result ).toBe( true );
   
@@ -650,7 +654,7 @@ describe("SimpleTime.isDatesInRange", function () {
     //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
     var newDate = new Date(1365404399998);  
 
-    result = SimpleTime.isDatesInRange(oldDate, newDate, 'day');
+    result = simpletime.isDatesInRange(oldDate, newDate, 'day');
       
     expect( result ).toBe( false );
   });
@@ -661,7 +665,7 @@ describe("SimpleTime.isDatesInRange", function () {
     //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
     var newDate = new Date(1365404399998);  
 
-    result = SimpleTime.isDatesInRange(oldDate, newDate, 'month');
+    result = simpletime.isDatesInRange(oldDate, newDate, 'month');
     
     expect( result ).toBe( true );
   });
@@ -672,7 +676,7 @@ describe("SimpleTime.isDatesInRange", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var newDate = new Date(1365222221485);
 
-    result = SimpleTime.isDatesInRange(oldDate, newDate, 'month');
+    result = simpletime.isDatesInRange(oldDate, newDate, 'month');
 
     expect( result ).toBe( false );
   });
@@ -683,7 +687,7 @@ describe("SimpleTime.isDatesInRange", function () {
     //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
     var newDate = new Date(1365404399998);  
 
-    result = SimpleTime.isDatesInRange(oldDate, newDate, 'year');
+    result = simpletime.isDatesInRange(oldDate, newDate, 'year');
 
     expect( result ).toBe( true );
   });
@@ -694,13 +698,13 @@ describe("SimpleTime.isDatesInRange", function () {
     //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
     var newDate = new Date(1365222221485);
 
-    result = SimpleTime.isDatesInRange(oldDate, newDate, 'year');
+    result = simpletime.isDatesInRange(oldDate, newDate, 'year');
 
     expect( result ).toBe( false );
   });
 });
 
-describe("SimpleTime.extractDateFormatted", function () {
+describe("simpletime.extractDateFormatted", function () {
   var result, resultExpected;
 
   it("should return a correct date object form formatted date, full", function () {  
@@ -709,7 +713,7 @@ describe("SimpleTime.extractDateFormatted", function () {
         dateFormatLong = "MMMM d, y h:mm:ss a z",
         dateFormatted = 'April 5, 2013 9:23:41 pm 420';
 
-    result = SimpleTime.extractDateFormatted(dateFormatted, dateFormatLong);
+    result = simpletime.extractDateFormatted(dateFormatted, dateFormatLong);
     /*
     resultExpected = 'Fri Apr 05 2013 22:23:49 GMT-0700 (PDT)';
     expect( result ).toBe( resultExpected );
@@ -722,15 +726,11 @@ describe("SimpleTime.extractDateFormatted", function () {
         dateFormatMedium = "MMM d, y h:mm:ss a",
         dateFormatted = 'April 5, 2013 9:23:41 pm 420';
 
-    result = SimpleTime.extractDateFormatted(dateFormatted, dateFormatMedium);
+    result = simpletime.extractDateFormatted(dateFormatted, dateFormatMedium);
     /*
     resultExpected = 'Fri Apr 05 2013 22:23:49 GMT-0700 (PDT)';
     expect( result ).toBe( resultExpected );
      */
   });
-
 });
 
-
-
-  
