@@ -2,13 +2,33 @@ simpleTime
 ==========
 **(c)[Bumblehead][0], 2013,2014,2015,2016** [MIT-license](#license)
 
-### overview
+simpletime manipulates dates and converts them to unicode formats. (supports i18n through [worldtime][1]).
 
-simpletime functions manipulatie dates and convert dates to and from unicode format. i18n unsupported ([worldtime][1]).
-
- * format and unformat dates using unicode [forms][2]
- * create and use `YMDArr` objects to simplify time manipulation
+ * formats and extracts dates with unicode [forms][2]
+ * uses `YMDArr` objects to simplify time manipulation
  * does not depend on a library
+
+
+```javascript
+simpletime.extractDateFormatted(
+  'April 5, 2013 9:23:41 pm 420',
+  'MMMM d, y h:mm:ss a z'
+);
+// Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+
+simpletime.applyFormatDate(
+  new Date('Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)'),
+  'MMMM d, y h:mm:ss a z'
+);
+// 'April 5, 2013 9:23:41 pm 420'
+
+simpletime.getElapsedTimeObj(
+  new Date('Sun Apr 07 2013 18:08:45 GMT-0700 (PDT)'),
+  new Date('Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)')
+)
+// { ms: 0, sec: 14, min: 51, hour: 5, day: 0 }
+```
+
 
 [0]: http://www.bumblehead.com                            "bumblehead"
 [1]: http://github.com/iambumblehead/worldtime            "worldtime"

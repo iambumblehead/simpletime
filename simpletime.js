@@ -1,7 +1,6 @@
 // Filename: simpletime.js  
 // Timestamp: 2016.01.07-22:38:57 (last modified)
 // Author(s): Bumblehead (www.bumblehead.com)  
-//
 // 
 // parts of this based on work found in comp.lang.javascript faq
 //
