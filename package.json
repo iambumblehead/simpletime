@@ -1,22 +1,27 @@
 {
   "name": "simpletime",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "main": "simpletime",
   "license" : "MIT",
+  "readmeFilename": "README.md",
+  "description": "Convert to and from various time formats. Get manipulated time values.",
   "repository": {
     "type": "git",
     "url": "https://github.com/iambumblehead/simpletime.git"
   },
   "keywords": [
     "time",
-    "date"
+    "times",    
+    "date",
+    "dates",
+    "datetime",    
+    "format",
+    "unicode"
   ],
   "devDependencies" : {
-      "jasmine-node" : ">=1.3.0"
+    "jasmine-node" : ">=1.3.0"
   },
   "scripts" : {
-      "test" : "node node_modules/jasmine-node/bin/jasmine-node --verbose test/"
-  },    
-  "readmeFilename": "README.md",
-  "description": "Convert to and from various time formats. Get manipulated time values."
+    "test" : "node node_modules/jasmine-node/bin/jasmine-node --verbose test/"
+  }
 }

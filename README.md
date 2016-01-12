@@ -1,8 +1,8 @@
-simpleTime
+simpletime
 ==========
 **(c)[Bumblehead][0], 2013,2014,2015,2016** [MIT-license](#license)
 
-simpletime manipulates dates and converts them to unicode formats. (supports i18n through [worldtime][1]).
+simpletime manages dates and renders them to unicode formats. (i18n through [worldtime][1]).
 
  * formats and extracts dates with unicode [forms][2]
  * uses `YMDArr` objects to simplify time manipulation
