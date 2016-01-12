@@ -25,7 +25,7 @@ simpletime.applyFormatDate(
 simpletime.getElapsedTimeObj(
   new Date('Sun Apr 07 2013 18:08:45 GMT-0700 (PDT)'),
   new Date('Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)')
-)
+);
 // { ms: 0, sec: 14, min: 51, hour: 5, day: 0 }
 ```
 
@@ -45,7 +45,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.isDateObj(new Date()) // true
+   simpletime.isDateObj(new Date()); // true
    ```
 
  * **getDateYNum ( _dateObj_ )**
@@ -55,7 +55,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.getDateYNum(new Date()) // 2016
+   simpletime.getDateYNum(new Date()); // 2016
    ```
 
  * **getDateYStr ( _dateObj_ )**
@@ -65,7 +65,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.getDateYStr(new Date()) // '2016'
+   simpletime.getDateYStr(new Date()); // '2016'
    ```
 
  * **getDateMNum ( _dateObj_ )**
@@ -75,7 +75,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.getDateMNum(new Date()) // 12
+   simpletime.getDateMNum(new Date()); // 12
    ```
    
  * **getDateMStr ( _dateObj_ )**
@@ -85,7 +85,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.getDateMStr(new Date()) // '12'
+   simpletime.getDateMStr(new Date()); // '12'
    ```
 
  * **getDateDNum ( _dateObj_ )**
@@ -95,7 +95,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.getDateDNum(new Date()) // 31
+   simpletime.getDateDNum(new Date()); // 31
    ```
 
  * **getDateDStr ( _dateObj_ )**
@@ -105,7 +105,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.getDateDStr(new Date()) // '31'
+   simpletime.getDateDStr(new Date()); // '31'
    ```
 
  * **getDateYMDNumArr ( _dateObj_ )**
@@ -115,7 +115,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.getDateYMDNumArr(new Date()) // [2016, 12, 31]
+   simpletime.getDateYMDNumArr(new Date()); // [2016, 12, 31]
    ```
    
  * **getDateYMDStrArr ( _dateObj_ )**
@@ -125,7 +125,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.getDateYMDStrArr(new Date()) // ['2016', '12', '31']
+   simpletime.getDateYMDStrArr(new Date()); // ['2016', '12', '31']
    ```
 
  * **getYMDArrDate ( _ymdArr_ )**
@@ -135,7 +135,7 @@ simpletime.getElapsedTimeObj(
    ex,
 
    ```javascript
-   simpletime.getYMDArrDate([2016, 12, 31])
+   simpletime.getYMDArrDate([2016, 12, 31]);
    // Sat Dec 31 2016 17:43:20 GMT-0800 (PST)
    ```
 
@@ -298,7 +298,7 @@ simpletime.getElapsedTimeObj(
    ```javascript
    simpletime.getTimeBgnMonth(
      new Date('Sat Dec 31 2016 17:43:20 GMT-0800 (PST)')
-   ) 
+   );
    // Thu Dec 01 2016 00:00:00 GMT-0800 (PST)
    ```
 
@@ -311,7 +311,7 @@ simpletime.getElapsedTimeObj(
    ```javascript
    simpletime.getTimeEndMonth(
      new Date('Sat Dec 31 2016 17:43:20 GMT-0800 (PST)')
-   ) 
+   );
    // Sat Dec 31 2016 23:59:59 GMT-0800 (PST)
    ```
 
@@ -324,7 +324,7 @@ simpletime.getElapsedTimeObj(
    ```javascript
    simpletime.getTimeBgnDay(
      new Date('Sat Dec 31 2016 17:43:20 GMT-0800 (PST)')
-   ) 
+   );
    // Sat Dec 31 2016 00:00:00 GMT-0800 (PST)
    ```
 
@@ -337,7 +337,7 @@ simpletime.getElapsedTimeObj(
    ```javascript
    simpletime.getTimeEndDay(
      new Date('Sat Dec 31 2016 17:43:20 GMT-0800 (PST)')
-   )
+   );
    // Sat Dec 31 2016 23:59:59 GMT-0800 (PST)
    ```
 
@@ -351,7 +351,7 @@ simpletime.getElapsedTimeObj(
    simpletime.isDateBeforeDate(
      new Date('Sat Dec 31 2016 17:43:20 GMT-0800 (PST)'),
      new Date('Sat Dec 31 2016 6:43:20 GMT-0800 (PST)')
-   ) 
+   ); 
    // false
    ```
 
@@ -365,7 +365,7 @@ simpletime.getElapsedTimeObj(
    Date.now(); // Sat Dec 31 2016 17:43:20 GMT-0800 (PST)
    simpletime.isDateBeforeToday(
      new Date('Sat Dec 31 2016 6:43:20 GMT-0800 (PST)')
-   ) 
+   );
    //false
    ```
 
@@ -488,7 +488,7 @@ simpletime.getElapsedTimeObj(
    simpletime.getElapsedTimeObj(
      new Date('Sun Apr 07 2013 18:08:45 GMT-0700 (PDT)'),
      new Date('Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)')
-   )
+   );
    // { ms: 0, sec: 14, min: 51, hour: 5, day: 0 }
    ```
 
@@ -502,7 +502,7 @@ simpletime.getElapsedTimeObj(
    simpletime.getElapsedTimeFormatted(
      new Date('Sun Apr 07 2013 18:08:45 GMT-0700 (PDT)'),
      new Date('Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)')
-   )
+   );
    // 051:014:0 (mm:ss:ms)
    ```
    
@@ -517,13 +517,13 @@ simpletime.getElapsedTimeObj(
      new Date('Sun Apr 07 2013 18:08:45 GMT-0700 (PDT)'),
      new Date('Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)'),
      'day'
-   )
+   );
    // true
    simpletime.isDatesInRange(
      new Date('Sun Apr 07 2013 18:08:45 GMT-0700 (PDT)'),
      new Date('Sun Apr 08 2013 23:59:59 GMT-0700 (PDT)'),
      'day'
-   )
+   );
    // false
    ```
 
@@ -537,7 +537,7 @@ simpletime.getElapsedTimeObj(
    simpletime.extractDateFormatted(
      'April 5, 2013 9:23:41 pm 420',
      'MMMM d, y h:mm:ss a z'
-   )
+   );
    // Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
    ```
 
