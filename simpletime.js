@@ -1,5 +1,5 @@
 // Filename: simpletime.js  
-// Timestamp: 2016.01.07-22:38:57 (last modified)
+// Timestamp: 2017.08.15-00:48:04 (last modified)
 // Author(s): Bumblehead (www.bumblehead.com)  
 // 
 // parts of this based on work found in comp.lang.javascript faq
@@ -130,34 +130,32 @@ var simpletime = module.exports = (function () {
     // WARNING: THESE METHODS ASSUME VALID INPUT
 
     // ex. 2013, 0008, 0488
-    getDateYStr: function (d) {
-      return ("000" + d.getFullYear()).slice(-4);
-    },
+    getDateYStr: (d) =>
+      ("000" + d.getFullYear()).slice(-4),
 
     // ex. 12, 10, 07, 04
-    getDateMStr: function (d) {
-      return ("0" + (d.getMonth() + 1)).slice(-2);
-    },
+    getDateMStr: (d) =>
+      ("0" + (d.getMonth() + 1)).slice(-2),
 
     // ex. 12, 10, 07, 04, 30
-    getDateDStr: function (d) {
-      return ("0" + d.getDate()).slice(-2);
-    },
+    getDateDStr: (d) =>
+      ("0" + d.getDate()).slice(-2),
+
+    getDatehhStr: (d) => ("0" + d.getHours()).slice(-2),
+    getDatemmStr: (d) => ("0" + d.getMinutes()).slice(-2),
+    getDatessStr: (d) => ("0" + d.getSeconds()).slice(-2),
 
     // ex. 2013, 8, 488
-    getDateYNum: function (d) {
-      return d.getFullYear();
-    },
+    getDateYNum: (d) =>
+      d.getFullYear(),
 
     // ex. 12, 10, 7, 4
-    getDateMNum: function (d) {
-      return d.getMonth() + 1;
-    },
+    getDateMNum: (d) =>
+      d.getMonth() + 1,
 
     // ex. 12, 10, 7, 4, 30
-    getDateDNum: function (d) {
-      return d.getDate();
-    },
+    getDateDNum: (d) =>
+      d.getDate(),
 
     getDateYMDStrArr: function (d) {
       var that = this;
@@ -166,6 +164,9 @@ var simpletime = module.exports = (function () {
           that.getDateYStr(d),
           that.getDateMStr(d),
           that.getDateDStr(d)
+          //that.getDatehhStr(d),
+          //that.getDatemmStr(d),
+          //that.getDatessStr(d)
         ];
       };
     },
@@ -178,21 +179,24 @@ var simpletime = module.exports = (function () {
         return [
           that.getDateYNum(d),
           that.getDateMNum(d),
-          that.getDateDNum(d)          
+          that.getDateDNum(d)
         ];
       };
     },
 
     // return date object from string OR number formatted ymdArr
-    getYMDArrDate: function (YMDArr) {
-      var y = YMDArr[0],
-          m = YMDArr[1],
-          d = YMDArr[2],
+    getYMDArrDate: (YMDArr = []) => {
+      let [y,m,d,hh,mm,ss,ms] = YMDArr,
           date = null;
 
       if (isNum(y) && isNum(m) && isNum(d)) {
         date = new Date();
-        date.setFullYear(+y, +m - 1, +d);        
+        date.setFullYear(+y, +m - 1, +d);
+
+        isNum(hh) && date.setHours(+hh);
+        isNum(mm) && date.setMinutes(+mm);
+        isNum(ss) && date.setSeconds(+ss);
+        isNum(ms) && date.setMilliseconds(+ms);
       }
 
       return date;
@@ -204,9 +208,8 @@ var simpletime = module.exports = (function () {
     // number may be negative so that the returned date will be in the past
     // 
     // optNum: +2 goes forward two. -6 go back 6.
-    getSecFromDate: function (dateObj, optNum) {
-      return new Date(dateObj.getTime() + optNum * 1000);
-    },
+    getSecFromDate: (dateObj, optNum) =>
+      (new Date(dateObj.getTime() + optNum * 1000)),
 
     getSecFromTodayDate: function (optNum) {
       return this.getMinFromDate(new Date(), optNum);
@@ -218,9 +221,8 @@ var simpletime = module.exports = (function () {
     // number may be negative so that the returned date will be in the past
     // 
     // optNum: +2 goes forward two. -6 go back 6.
-    getMinFromDate: function (dateObj, optNum) {
-      return new Date(dateObj.getTime() + optNum * 60 * 1000);
-    },
+    getMinFromDate: (dateObj, optNum) =>
+      (new Date(dateObj.getTime() + optNum * 60 * 1000)),
 
     getMinFromTodayDate: function (optNum) {
       return this.getMinFromDate(new Date(), optNum);
@@ -232,9 +234,8 @@ var simpletime = module.exports = (function () {
     // number may be negative so that the returned date will be in the past
     // 
     // optNum: +2 goes forward two. -6 go back 6.
-    getHourFromDate: function (dateObj, optNum) {
-      return new Date(dateObj.getTime() + optNum * 60 * 60 * 1000);
-    },
+    getHourFromDate: (dateObj, optNum) => 
+      (new Date(dateObj.getTime() + optNum * 60 * 60 * 1000)),
 
     getHourFromTodayDate: function (optNum) {
       return this.getMinFromDate(new Date(), optNum);
@@ -663,7 +664,7 @@ var simpletime = module.exports = (function () {
     // 
     // format: "M/d/yyyy h:mm a"
     // return: "4/5/2013 9:23 pm"
-    applyFormatDate: function (d, format) {
+    applyFormatDate: function (date, format, d = new Date(date)) {
       var that = this, YMDArr, year = d.getFullYear(),
           isInRange = year >= 0 && year <= 9999, hour,
           localeMethods = that.localeMethods,
@@ -673,6 +674,7 @@ var simpletime = module.exports = (function () {
         //throw RangeError("formatDate: year must be 0000-9999");
       }
       YMDArr = that.getDateYMDStrArr(d);
+
       return format.replace(tzRe, function (match) {
         switch (match) {
         case "y":
@@ -795,6 +797,9 @@ var simpletime = module.exports = (function () {
 
       function getAsISO(tokenItem, dateStrObj) {
         var tokenItemL = tokenItem.toLowerCase();
+
+        //return Object.keys(dateStrObj)
+        //  .find(key => dateStrObj[key].toLowerCase() === tokenItemL) || '';
         for (var o in dateStrObj) {
           if (dateStrObj.hasOwnProperty(o)) {
             if (dateStrObj[o].toLowerCase() === tokenItemL) return o;
