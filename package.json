@@ -1,7 +1,9 @@
 {
   "name": "simpletime",
-  "version": "0.1.29",
-  "main": "simpletime",
+  "version": "0.2.0",
+  "main": "simpletime.dist",
+  "browser": "simpletime.dist",
+  "module": "simpletime",
   "license": "MIT",
   "readmeFilename": "README.md",
   "description": "Convert to and from various time formats. Get manipulated time values.",
@@ -19,9 +21,17 @@
     "unicode"
   ],
   "devDependencies": {
-    "ava": "^3.11.1"
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.1",
+    "@babel/preset-env": "^7.10.1",
+    "ava": "^3.11.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^7.6.0"
   },
   "scripts": {
-    "test": "ava simpletime.spec.js"
+    "test": "ava simpletime.spec.js",
+    "lint": "eslint simpletime.js",
+    "start": "./node_modules/.bin/babel simpletime.js --out-file simpletime.dist.js --presets=@babel/env",
+    "prepare": "npm start && npm run lint && npm test"
   }
 }

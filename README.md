@@ -1,6 +1,8 @@
 simpletime
 ==========
-**(c)[Bumblehead][0], 2013,2014,2015,2016** [MIT-license](#license)
+**(c)[Bumblehead][0]**
+
+[![npm version](https://badge.fury.io/js/simpletime.svg)](https://badge.fury.io/js/simpletime) [![Build Status](https://travis-ci.org/iambumblehead/simpletime.svg?branch=master)](https://travis-ci.org/iambumblehead/simpletime)
 
 simpletime manages dates and renders them to unicode formats. (i18n through [worldtime][1]).
 

@@ -3,47 +3,47 @@
 // Author(s): bumblehead <chris@bumblehead.com>
 
 const test = require('ava');
-const simpletime = require('../simpletime');
+const simpletime = require('.').default;
 
 //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
 
 test("isDateObj, should return false if input is null", t => {
-  t.is( simpletime.isDateObj(null), false );
+  t.is(simpletime.isDateObj(null), false);
 });
 
 test("isDateObj, should return false if input is undefined", t => {
-  t.is( simpletime.isDateObj(null), false );
+  t.is(simpletime.isDateObj(null), false);
 });
 
 test("isDateObj, should return false if input is {}", t => {
-  t.is( simpletime.isDateObj({}), false );
+  t.is(simpletime.isDateObj({}), false);
 });
 
 test("isDateObj, should return true if input is a valid date object", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   var date = new Date(1365222221485);
 
-  t.is( simpletime.isDateObj(date), true );
+  t.is(simpletime.isDateObj(date), true);
 });
 
 test("getDateYStr, should return the correct year number", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   var date = new Date(1365222221485);
 
-  t.is( simpletime.getDateYStr(date), '2013' );
+  t.is(simpletime.getDateYStr(date), '2013');
 });
 
 test("getDateMStr, should return the correct month number", t => {
   var date = new Date(1365222221485);
 
-  t.is( simpletime.getDateMStr(date), '04' );
+  t.is(simpletime.getDateMStr(date), '04');
 });
 
 test("getDateDStr, should return the correct day number", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   var date = new Date(1365222221485);
 
-  t.is( simpletime.getDateDStr(date), '05' );
+  t.is(simpletime.getDateDStr(date), '05');
 });
 
 test("getDateYMDStrArr, should return the correct day number", t => {
@@ -51,7 +51,7 @@ test("getDateYMDStrArr, should return the correct day number", t => {
   const date = new Date(1365222221485);
   const result = simpletime.getDateYMDStrArr(date);
 
-  t.deepEqual( result, ['2013', '04', '05' ]);
+  t.deepEqual(result, [ '2013', '04', '05' ]);
 });
 
 test("getDateYMDNumArr, should return the correct day number", t => {
@@ -59,9 +59,10 @@ test("getDateYMDNumArr, should return the correct day number", t => {
   const date = new Date(1365222221485);
   const result = simpletime.getDateYMDNumArr(date);
 
-  t.deepEqual( result, [ 2013, 4, 5 ]);
+  t.deepEqual(result, [ 2013, 4, 5 ]);
 });
 
+// eslint-disable-next-line max-len
 test("getDateYMDArr, should return the correct date object from YMDStrArr", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -74,6 +75,7 @@ test("getDateYMDArr, should return the correct date object from YMDStrArr", t =>
      result.getDate() === date.getDate(), true );
 });
 
+// eslint-disable-next-line max-len
 test("getMinFromDate, should return a new date one minute ahead of the given date object", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -82,6 +84,7 @@ test("getMinFromDate, should return a new date one minute ahead of the given dat
   t.is(result.getMinutes(), date.getMinutes() + 1);
 });
 
+// eslint-disable-next-line max-len
 test("getMFittedYMDNumArr, should return a new YMDNumArr with a correct month greater than 12", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -90,6 +93,7 @@ test("getMFittedYMDNumArr, should return a new YMDNumArr with a correct month gr
   t.is(result[1], 12 );
 });  
 
+// eslint-disable-next-line max-len
 test("getMFittedYMDNumArr, should return a new YMDNumArr with a correct month less than 1", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -98,6 +102,7 @@ test("getMFittedYMDNumArr, should return a new YMDNumArr with a correct month le
   t.is(result[1], 1 );
 });  
 
+// eslint-disable-next-line max-len
 test("getMFittedYMDNumArr, should return a new YMDNumArr with same month if 1 <= month <= 12", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -106,6 +111,7 @@ test("getMFittedYMDNumArr, should return a new YMDNumArr with same month if 1 <=
   t.is(result[1], 4 );
 });  
 
+// eslint-disable-next-line max-len
 test("getDFittedYMDNumArr, should return a new YMDNumArr with a correct day greater than possible days in month", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -114,6 +120,7 @@ test("getDFittedYMDNumArr, should return a new YMDNumArr with a correct day grea
   t.is(result[2], 30 );
 });  
 
+// eslint-disable-next-line max-len
 test("getDFittedYMDNumArr, should return a new YMDNumArr with a correct day less than 1", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -122,6 +129,7 @@ test("getDFittedYMDNumArr, should return a new YMDNumArr with a correct day less
   t.is(result[2], 1 );
 });  
 
+// eslint-disable-next-line max-len
 test("getDFittedYMDNumArr, should return a new YMDNumArr with same day if 1 <= month <= possible days of month at year", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -160,8 +168,9 @@ test("getDaysInMonth, should return `30` for y = 2013, m = 4", t => {
   const result = simpletime.getDaysInMonth(2013, 4);
 
   t.is(result, 30 );
-});  
+});
 
+// eslint-disable-next-line max-len
 test("getDayFromDate, should return a new date one day ahead of the given date object", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -170,6 +179,7 @@ test("getDayFromDate, should return a new date one day ahead of the given date o
   t.is(result.getDate(), date.getDate() + 1 );
 });
 
+// eslint-disable-next-line max-len
 test("getMonthFromDate, should return a new date one month ahead of the given date object", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -178,6 +188,7 @@ test("getMonthFromDate, should return a new date one month ahead of the given da
   t.is(result.getMonth(), date.getMonth() + 1);
 });
 
+// eslint-disable-next-line max-len
 test("getYearFromDate, should return a new date one year ahead of the given date object", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -186,6 +197,7 @@ test("getYearFromDate, should return a new date one year ahead of the given date
   t.is(result.getFullYear(), date.getFullYear() + 1);
 });
 
+// eslint-disable-next-line max-len
 test("isDateBeforeDate, should return true for a date that is before a date", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const oldDate = new Date(1365222221485);
@@ -195,6 +207,7 @@ test("isDateBeforeDate, should return true for a date that is before a date", t 
   t.is(simpletime.isDateBeforeDate(oldDate, newDate), true);
 });
 
+// eslint-disable-next-line max-len
 test("isDateBeforeDate, should return false for a date that is before a date", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const oldDate = new Date(1365222221485);
@@ -204,6 +217,7 @@ test("isDateBeforeDate, should return false for a date that is before a date", t
   t.is(simpletime.isDateBeforeDate(newDate, oldDate), false);
 });
 
+// eslint-disable-next-line max-len
 test("getTimeBgnMonth, should return true for a date defined to the beginning of the month", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -220,6 +234,7 @@ test("getTimeBgnMonth, should return true for a date defined to the beginning of
           result.getMilliseconds() === 0 , true );
 });
 
+// eslint-disable-next-line max-len
 test("getTimeEndMonth, should return true for a date defined to the end of the month", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -236,6 +251,7 @@ test("getTimeEndMonth, should return true for a date defined to the end of the m
           result.getMilliseconds() === 998 , true );
 });
 
+// eslint-disable-next-line max-len
 test("getTimeBgnDay, should return true for a date defined to the beginning of the day", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -252,6 +268,7 @@ test("getTimeBgnDay, should return true for a date defined to the beginning of t
           result.getMilliseconds() === 0 , true );
 });
 
+// eslint-disable-next-line max-len
 test("getTimeBgnDay, should return a date defined to the beginning of the day", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -264,6 +281,7 @@ test("getTimeBgnDay, should return a date defined to the beginning of the day", 
           result.getMilliseconds() === 0 , true );
 });
 
+// eslint-disable-next-line max-len
 test("parseISO8601, should return a date from a simplified ISO formatted date, `2013/12/20`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -275,7 +293,7 @@ test("parseISO8601, should return a date from a simplified ISO formatted date, `
           result.getDate() === 20 , true );
 });
 
-
+// eslint-disable-next-line max-len
 test("parseUSEndian, should return a date from a simplified US Endian formatted date, `12/20/2013`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -287,6 +305,7 @@ test("parseUSEndian, should return a date from a simplified US Endian formatted 
           result.getDate() === 20 , true );
 });
 
+// eslint-disable-next-line max-len
 test("getDateAsISO, should return a simplified ISO formatted date from a date, `2013/4/5`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -294,6 +313,7 @@ test("getDateAsISO, should return a simplified ISO formatted date from a date, `
   t.is( simpletime.getDateAsISO(date) , '2013/04/05' );
 });
 
+// eslint-disable-next-line max-len
 test("getDateUSEndian, should return a simplified US Endian formatted date from a date, `4/5/2013`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -302,6 +322,7 @@ test("getDateUSEndian, should return a simplified US Endian formatted date from 
 });
 
 // first date will be 3/3/2010
+// eslint-disable-next-line max-len
 test("yieldRangeMonthly, should return 38 dates twixt `3/3/2010` and `4/5/2013`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -313,6 +334,7 @@ test("yieldRangeMonthly, should return 38 dates twixt `3/3/2010` and `4/5/2013`"
 });
 
 // first date will be 3/3/2010
+// eslint-disable-next-line max-len
 test("yieldRangeDaily, should return 3 dates twixt `4/5/2013, 21:23` and `4/7/2013, 17:40`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const oldDate = new Date(1365222221485);
@@ -328,6 +350,7 @@ test("yieldRangeDaily, should return 3 dates twixt `4/5/2013, 21:23` and `4/7/20
 });
 
 // first date will be 3/3/2010
+// eslint-disable-next-line max-len
 test("yieldRangeDaily, should return 4 dates twixt `4/5/2013, 21:23` and `4/7/2013, 23:59`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const oldDate = new Date(1365222221485);
@@ -344,6 +367,7 @@ test("yieldRangeDaily, should return 4 dates twixt `4/5/2013, 21:23` and `4/7/20
   t.is( result.length , 3 );
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, full", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -354,6 +378,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
     'April 5, 2013 9:23:41 pm 420' );
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, medium", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -364,6 +389,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
     'Apr 5, 2013 9:23:41 pm' );
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, short", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -374,6 +400,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
     '4/5/2013 9:23 pm');
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, `dd-MM-yy`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -384,6 +411,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
     '05-04-13');
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, `M/d/yy`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -392,6 +420,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
   t.is(simpletime.applyFormatDate(date, dateFormatShort), '4/5/13');
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, `dd-MM-yyyy`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -400,6 +429,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
   t.is( simpletime.applyFormatDate(date, dateFormatShort), '05-04-2013');
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, `MMM d, y`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -408,6 +438,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
   t.is( simpletime.applyFormatDate(date, dateFormatShort), 'Apr 5, 2013');
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, `MMMM d, y`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -416,6 +447,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
   t.is( simpletime.applyFormatDate(date, dateFormatShort), 'April 5, 2013');
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, `5 'de' April 'de' 2013`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -424,6 +456,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
   t.is( simpletime.applyFormatDate(date, dateFormatShort), "5 'de' April 'de' 2013");
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, `EEEE, d 'de' MMMM 'de' y`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -432,6 +465,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
   t.is( simpletime.applyFormatDate(date, dateFormatShort), "Friday, 5 'de' April 'de' 2013" );
 });
 
+// eslint-disable-next-line max-len
 test("applyFormatDate, should return a correctly formatted date from date object, `EEEE, MMMM d, y`", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
@@ -440,6 +474,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
   t.is( simpletime.applyFormatDate(date, dateFormatShort), "Friday, April 5, 2013");
 });
 
+// eslint-disable-next-line max-len
 test("getElapsedTime, should return an object whose properties describe elapsed time, ", t => {
   //Sun Apr 07 2013 18:08:45 GMT-0700 (PDT)
   const oldDate = new Date(1365383325444);
@@ -454,6 +489,7 @@ test("getElapsedTime, should return an object whose properties describe elapsed 
           result.day === 0 , true );
 });  
 
+// eslint-disable-next-line max-len
 test("isDatesInRange, should return true when dates are within the same day", t => {
   //Sun Apr 07 2013 18:08:45 GMT-0700 (PDT)
   const oldDate = new Date(1365383325444);
@@ -463,6 +499,7 @@ test("isDatesInRange, should return true when dates are within the same day", t 
   t.is( simpletime.isDatesInRange(oldDate, newDate, 'day') , true );
 });
 
+// eslint-disable-next-line max-len
 test("isDatesInRange, should return false when dates are not within the same day", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const oldDate = new Date(1365222221485);
@@ -472,6 +509,7 @@ test("isDatesInRange, should return false when dates are not within the same day
   t.is( simpletime.isDatesInRange(oldDate, newDate, 'day') , false );
 });
 
+// eslint-disable-next-line max-len
 test("isDatesInRange, should return true when dates are within the same month", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const oldDate = new Date(1365222221485);
@@ -481,6 +519,7 @@ test("isDatesInRange, should return true when dates are within the same month", 
   t.is( simpletime.isDatesInRange(oldDate, newDate, 'month') , true );
 });
 
+// eslint-disable-next-line max-len
 test("isDatesInRange, should return false when dates are within the different month", t => {
   //Wed Mar 03 2010 17:32:44 GMT-0800 (PST)
   const oldDate = new Date(1267666364512);
@@ -490,6 +529,7 @@ test("isDatesInRange, should return false when dates are within the different mo
   t.is( simpletime.isDatesInRange(oldDate, newDate, 'month') , false );
 });
 
+// eslint-disable-next-line max-len
 test("isDatesInRange, should return true when dates are within the same year", t => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const oldDate = new Date(1365222221485);
@@ -499,6 +539,7 @@ test("isDatesInRange, should return true when dates are within the same year", t
   t.is( simpletime.isDatesInRange(oldDate, newDate, 'year') , true );
 });
 
+// eslint-disable-next-line max-len
 test("isDatesInRange, should return false when dates are not within the same year", t => {
   //Wed Mar 03 2010 17:32:44 GMT-0800 (PST)
   const oldDate = new Date(1267666364512);
@@ -508,6 +549,7 @@ test("isDatesInRange, should return false when dates are not within the same yea
   t.is( simpletime.isDatesInRange(oldDate, newDate, 'year') , false );
 });
 
+// eslint-disable-next-line max-len
 test("extractDateFormatted, should return a correct date object form formatted date, full", t => {  
   const date = new Date(1365308621485),
         dateFormatLong = "MMMM d, y h:mm:ss a z",
@@ -518,6 +560,7 @@ test("extractDateFormatted, should return a correct date object form formatted d
     date.getTime());
 });
 
+// eslint-disable-next-line max-len
 test("extractDateFormatted, should return a correct date object form formatted date, medium", t => {  
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221000),
