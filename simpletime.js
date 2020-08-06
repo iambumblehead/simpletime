@@ -21,7 +21,7 @@ var simpletime = module.exports = (function () {
   return {
     // used by worldTime script
     // localeMap : {},
-    localeMethods_getDateSymbolsMonthAbbrev : function () {
+    localeMethods_getDateSymbolsMonthAbbrev : () => {
         return {
           1:"Jan",
           2:"Feb",
@@ -37,7 +37,7 @@ var simpletime = module.exports = (function () {
           12:"Dec"
         };      
     },
-    localeMethods_getDateSymbolsMonthWide : function () {
+    localeMethods_getDateSymbolsMonthWide : () => {
         return {
           1:"January",
           2:"February",
@@ -53,7 +53,7 @@ var simpletime = module.exports = (function () {
           12:"December"
         };
       },
-      localeMethods_getDateSymbolsMonthNarrow : function () {
+      localeMethods_getDateSymbolsMonthNarrow : () => {
         return {
           1:"J",
           2:"F",
@@ -69,7 +69,7 @@ var simpletime = module.exports = (function () {
           12:"D"
         };
       },
-      localeMethods_getDateSymbolsDayAbbrev : function () {
+      localeMethods_getDateSymbolsDayAbbrev : () => {
         return [
           "sun", 
           "mon", 
@@ -80,7 +80,7 @@ var simpletime = module.exports = (function () {
           "sat"
         ];      
       },
-      localeMethods_getDateSymbolsDayWide : function () {
+      localeMethods_getDateSymbolsDayWide : () => {
         return [
           "Sunday",
           "Monday",
@@ -186,17 +186,18 @@ var simpletime = module.exports = (function () {
 
     // return date object from string OR number formatted ymdArr
     getYMDArrDate: (YMDArr = []) => {
-      let [y,m,d,hh,mm,ss,ms] = YMDArr,
+      let [y = 0, m = 0, d = 0, hh = 0, mm = 0, ss = 0, ms = 0] = YMDArr,
           date = null;
 
       if (isNum(y) && isNum(m) && isNum(d)) {
         date = new Date();
         date.setFullYear(+y, +m - 1, +d);
-
-        isNum(hh) && date.setHours(+hh);
-        isNum(mm) && date.setMinutes(+mm);
-        isNum(ss) && date.setSeconds(+ss);
-        isNum(ms) && date.setMilliseconds(+ms);
+        date.setHours(
+          isNum(hh) ? +hh : 0,
+          isNum(mm) ? +mm : 0,
+          isNum(ss) ? +ss : 0,
+          isNum(ms) ? +ms : 0
+        );
       }
 
       return date;
@@ -789,7 +790,7 @@ var simpletime = module.exports = (function () {
     // dStr: 10/1/2012039
     // format: M/d/yyyy
     extractDateFormatted: function (dStr, format) {
-      var that = this, x, ymdArr = [], ymdTestArr, token, tokenItem, finDateObj,
+      var that = this, x, ymdArr = [0,0,0,0,0,0,0,0], ymdTestArr, token, tokenItem, finDateObj,
           formatRaw = format.replace(/[^\d\w]/gi, ' '),
           dStrRaw = dStr.replace(/[^\d\w]/gi, ' '),
           formatTokens = formatRaw.split(' '),
@@ -890,12 +891,16 @@ var simpletime = module.exports = (function () {
           ymdArr[5] = tokenItem + '';
         } else if (token.match(/a/)) {
           // am, a, pm, p, noon, n
-          ymdArr[6] = tokenItem + '';
+          if (/pm?/.test( tokenItem )) {
+            // assumes pm occurs after hour
+            ymdArr[3] += 12;
+          }
         } else if (token.match(/v|z/)) {
           // Pacific Time, Paris Time
-          ymdArr[7] = tokenItem + '';
+          ymdArr[6] = tokenItem + '';
         }
       });
+
       if (ymdArr[0] && ymdArr[1] && ymdArr[2]) {
         // if `m` or `d` values are too large or small, dateObj is still
         // generated as per specificiation `15.9 Date Objects`
