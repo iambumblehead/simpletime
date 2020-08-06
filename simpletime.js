@@ -849,8 +849,6 @@ const extractDateFormatted = (dStr, format) => {
   }
 };
 
-
-
 export default {
   isNum,
   dateRegex,

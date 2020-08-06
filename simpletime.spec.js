@@ -3,9 +3,10 @@
 // Author(s): bumblehead <chris@bumblehead.com>
 
 const test = require('ava');
+const timezone_mock = require('timezone-mock');
 const simpletime = require('.').default;
 
-//Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
+timezone_mock.register('US/Pacific');
 
 test("isDateObj, should return false if input is null", t => {
   t.is(simpletime.isDateObj(null), false);
