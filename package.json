@@ -1,12 +1,14 @@
 {
   "name": "simpletime",
-  "version": "0.2.0",
-  "main": "simpletime.dist",
-  "browser": "simpletime.dist",
-  "module": "simpletime",
+  "version": "0.3.0",
+  "type": "module",
+  "module": "simpletime.js",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "description": "Convert to and from various time formats. Get manipulated time values.",
+  "description": "Convert and manipulate various time formats..",
+  "files": [
+    "simpletime.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/iambumblehead/simpletime.git"
@@ -21,18 +23,10 @@
     "unicode"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.1",
-    "@babel/preset-env": "^7.10.1",
-    "timezone-mock": "^1.1.1",
-    "ava": "^3.11.1",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^7.6.0"
+    "timezone-mock": "^1.1.1"
   },
   "scripts": {
-    "test": "ava simpletime.spec.js",
-    "lint": "eslint simpletime.js",
-    "start": "./node_modules/.bin/babel simpletime.js --out-file simpletime.dist.js --presets=@babel/env",
-    "prepare": "npm start && npm run lint && npm test"
+    "test": "node --test",
+    "prepare": "npm test"
   }
 }
