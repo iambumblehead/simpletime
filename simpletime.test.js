@@ -68,13 +68,13 @@ test("getDateYMDNumArr, should return the correct day number", () => {
 test("getDateYMDArr, should return the correct date object from YMDStrArr", () => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
-  const result = simpletime.getYMDArrDate([2013, 4, 5]);
-  const resultExpected = [2013, 4, 5];
+  const result = simpletime.getYMDArrDate([ 2013, 4, 5 ]);
+  const resultExpected = [ 2013, 4, 5 ];
 
-  assert.deepStrictEqual( result &&
+  assert.deepStrictEqual(result &&
      result.getFullYear() === date.getFullYear() && 
      result.getMonth() === date.getMonth() &&
-     result.getDate() === date.getDate(), true );
+     result.getDate() === date.getDate(), true);
 });
 
 // eslint-disable-next-line max-len
@@ -90,54 +90,54 @@ test("getMinFromDate, should return a new date one minute ahead of the given dat
 test("getMFittedYMDNumArr, should return a new YMDNumArr with a correct month greater than 12", () => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
-  const result = simpletime.getMFittedYMDNumArr([2013, 13, 3]);
+  const result = simpletime.getMFittedYMDNumArr([ 2013, 13, 3 ]);
 
-  assert.strictEqual(result[1], 12 );
+  assert.strictEqual(result[1], 12);
 });  
 
 // eslint-disable-next-line max-len
 test("getMFittedYMDNumArr, should return a new YMDNumArr with a correct month less than 1", () => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
-  const result = simpletime.getMFittedYMDNumArr([2013, 0, 3]);
+  const result = simpletime.getMFittedYMDNumArr([ 2013, 0, 3 ]);
 
-  assert.strictEqual(result[1], 1 );
+  assert.strictEqual(result[1], 1);
 });  
 
 // eslint-disable-next-line max-len
 test("getMFittedYMDNumArr, should return a new YMDNumArr with same month if 1 <= month <= 12", () => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
-  const result = simpletime.getMFittedYMDNumArr([2013, 4, 3]);
+  const result = simpletime.getMFittedYMDNumArr([ 2013, 4, 3 ]);
 
-  assert.strictEqual(result[1], 4 );
+  assert.strictEqual(result[1], 4);
 });  
 
 // eslint-disable-next-line max-len
 test("getDFittedYMDNumArr, should return a new YMDNumArr with a correct day greater than possible days in month", () => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
-  const result = simpletime.getDFittedYMDNumArr([2013, 4, 33]);
+  const result = simpletime.getDFittedYMDNumArr([ 2013, 4, 33 ]);
   
-  assert.strictEqual(result[2], 30 );
+  assert.strictEqual(result[2], 30);
 });  
 
 // eslint-disable-next-line max-len
 test("getDFittedYMDNumArr, should return a new YMDNumArr with a correct day less than 1", () => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
-  const result = simpletime.getDFittedYMDNumArr([2013, 4, 0]);
+  const result = simpletime.getDFittedYMDNumArr([ 2013, 4, 0 ]);
 
-  assert.strictEqual(result[2], 1 );
+  assert.strictEqual(result[2], 1);
 });  
 
 // eslint-disable-next-line max-len
 test("getDFittedYMDNumArr, should return a new YMDNumArr with same day if 1 <= month <= possible days of month at year", () => {
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
-  const result = simpletime.getDFittedYMDNumArr([2013, 4, 3]);
+  const result = simpletime.getDFittedYMDNumArr([ 2013, 4, 3 ]);
 
-  assert.strictEqual(result[2], 3 );
+  assert.strictEqual(result[2], 3);
 });  
 
 test("getDaysInMonth, should return `31` for y = 2013, m = 1", () => {
@@ -145,7 +145,7 @@ test("getDaysInMonth, should return `31` for y = 2013, m = 1", () => {
   const date = new Date(1365222221485);
   const result = simpletime.getDaysInMonth(2013, 1);
 
-  assert.strictEqual(result, 31 );
+  assert.strictEqual(result, 31);
 });  
 
 test("getDaysInMonth, should return `28` for y = 2013, m = 2", () => {
@@ -153,7 +153,7 @@ test("getDaysInMonth, should return `28` for y = 2013, m = 2", () => {
   const date = new Date(1365222221485);
   const result = simpletime.getDaysInMonth(2013, 2);
 
-  assert.strictEqual(result, 28 );
+  assert.strictEqual(result, 28);
 });  
 
 test("getDaysInMonth, should return `31` for y = 2013, m = 3", () => {
@@ -161,7 +161,7 @@ test("getDaysInMonth, should return `31` for y = 2013, m = 3", () => {
   const date = new Date(1365222221485);
   const result = simpletime.getDaysInMonth(2013, 3);
 
-  assert.strictEqual(result, 31 );
+  assert.strictEqual(result, 31);
 });  
 
 test("getDaysInMonth, should return `30` for y = 2013, m = 4", () => {
@@ -169,7 +169,7 @@ test("getDaysInMonth, should return `30` for y = 2013, m = 4", () => {
   const date = new Date(1365222221485);
   const result = simpletime.getDaysInMonth(2013, 4);
 
-  assert.strictEqual(result, 30 );
+  assert.strictEqual(result, 30);
 });
 
 // eslint-disable-next-line max-len
@@ -178,7 +178,7 @@ test("getDayFromDate, should return a new date one day ahead of the given date o
   const date = new Date(1365222221485);
   const result = simpletime.getDayFromDate(date, 1);
 
-  assert.strictEqual(result.getDate(), date.getDate() + 1 );
+  assert.strictEqual(result.getDate(), date.getDate() + 1);
 });
 
 // eslint-disable-next-line max-len
@@ -225,7 +225,7 @@ test("getTimeBgnMonth, should return true for a date defined to the beginning of
   const date = new Date(1365222221485);
   const result = simpletime.getTimeBgnMonth(date);
 
-  assert.strictEqual( result &&
+  assert.strictEqual(result &&
           result.getFullYear() === date.getFullYear() && 
           result.getMonth() === date.getMonth() &&
           result.getDate() === 1 &&
@@ -233,7 +233,7 @@ test("getTimeBgnMonth, should return true for a date defined to the beginning of
           result.getHours() === 0 &&          
           result.getMinutes() === 0 &&          
           result.getSeconds() === 0 &&          
-          result.getMilliseconds() === 0 , true );
+          result.getMilliseconds() === 0 , true);
 });
 
 // eslint-disable-next-line max-len
@@ -242,7 +242,7 @@ test("getTimeEndMonth, should return true for a date defined to the end of the m
   const date = new Date(1365222221485);
   const result = simpletime.getTimeEndMonth(date);
 
-  assert.strictEqual( result &&
+  assert.strictEqual(result &&
           result.getFullYear() === date.getFullYear() && 
           result.getMonth() === date.getMonth() &&
           result.getDate() === simpletime.getLastOfMonth(date).getDate() &&
@@ -250,7 +250,7 @@ test("getTimeEndMonth, should return true for a date defined to the end of the m
           result.getHours() === 23 &&          
           result.getMinutes() === 59 &&          
           result.getSeconds() === 59 &&          
-          result.getMilliseconds() === 998 , true );
+          result.getMilliseconds() === 998 , true);
 });
 
 // eslint-disable-next-line max-len
@@ -259,7 +259,7 @@ test("getTimeBgnDay, should return true for a date defined to the beginning of t
   const date = new Date(1365222221485);
   const result = simpletime.getTimeBgnDay(date);
 
-  assert.strictEqual( result &&
+  assert.strictEqual(result &&
           result.getFullYear() === date.getFullYear() && 
           result.getMonth() === date.getMonth() &&
           result.getDate() === date.getDate() &&
@@ -267,7 +267,7 @@ test("getTimeBgnDay, should return true for a date defined to the beginning of t
           result.getHours() === 0 &&          
           result.getMinutes() === 0 &&          
           result.getSeconds() === 0 &&          
-          result.getMilliseconds() === 0 , true );
+          result.getMilliseconds() === 0 , true);
 });
 
 // eslint-disable-next-line max-len
@@ -276,11 +276,11 @@ test("getTimeBgnDay, should return a date defined to the beginning of the day", 
   const date = new Date(1365222221485);
   const result = simpletime.getTimeBgnDay(date);
 
-  assert.strictEqual( result &&
+  assert.strictEqual(result &&
           result.getHours() === 0 &&          
           result.getMinutes() === 0 &&          
           result.getSeconds() === 0 &&          
-          result.getMilliseconds() === 0 , true );
+          result.getMilliseconds() === 0 , true);
 });
 
 // eslint-disable-next-line max-len
@@ -289,10 +289,10 @@ test("parseISO8601, should return a date from a simplified ISO formatted date, `
   const date = new Date(1365222221485);
   const result = simpletime.parseISO8601('2013/12/20');
 
-  assert.strictEqual( result &&
+  assert.strictEqual(result &&
           result.getFullYear() === 2013 && 
           result.getMonth() === 11 &&
-          result.getDate() === 20 , true );
+          result.getDate() === 20 , true);
 });
 
 // eslint-disable-next-line max-len
@@ -301,10 +301,10 @@ test("parseUSEndian, should return a date from a simplified US Endian formatted 
   const date = new Date(1365222221485);
   const result = simpletime.parseUSEndian('12/20/2013');
 
-  assert.strictEqual( result &&
+  assert.strictEqual(result &&
           result.getFullYear() === 2013 && 
           result.getMonth() === 11 &&
-          result.getDate() === 20 , true );
+          result.getDate() === 20 , true);
 });
 
 // eslint-disable-next-line max-len
@@ -312,7 +312,7 @@ test("getDateAsISO, should return a simplified ISO formatted date from a date, `
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
 
-  assert.strictEqual( simpletime.getDateAsISO(date) , '2013/04/05' );
+  assert.strictEqual(simpletime.getDateAsISO(date) , '2013/04/05');
 });
 
 // eslint-disable-next-line max-len
@@ -320,7 +320,7 @@ test("getDateUSEndian, should return a simplified US Endian formatted date from 
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const date = new Date(1365222221485);
 
-  assert.strictEqual( simpletime.getDateAsUSEndian(date) , '04/05/2013' );
+  assert.strictEqual(simpletime.getDateAsUSEndian(date) , '04/05/2013');
 });
 
 // first date will be 3/3/2010
@@ -332,7 +332,7 @@ test("yieldRangeMonthly, should return 38 dates twixt `3/3/2010` and `4/5/2013`"
   const oldDate = new Date(1267666364512);
   const result = simpletime.yieldRangeMonthly(oldDate, date);
 
-  assert.strictEqual( result && result.length === 38 , true );
+  assert.strictEqual(result && result.length === 38 , true);
 });
 
 // first date will be 3/3/2010
@@ -366,7 +366,7 @@ test("yieldRangeDaily, should return 4 dates twixt `4/5/2013, 21:23` and `4/7/20
     1365318000000 // Date 2013-04-07 07:00:00 UTC
   ]);
   
-  assert.strictEqual( result.length , 3 );
+  assert.strictEqual(result.length , 3);
 });
 
 // eslint-disable-next-line max-len
@@ -377,7 +377,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
 
   assert.strictEqual(
     simpletime.applyFormatDate(date, dateFormatLong),
-    'April 5, 2013 9:23:41 pm 420' );
+    'April 5, 2013 9:23:41 pm 420');
 });
 
 // eslint-disable-next-line max-len
@@ -388,7 +388,7 @@ test("applyFormatDate, should return a correctly formatted date from date object
 
   assert.strictEqual(
     simpletime.applyFormatDate(date, dateFormatMedium),
-    'Apr 5, 2013 9:23:41 pm' );
+    'Apr 5, 2013 9:23:41 pm');
 });
 
 // eslint-disable-next-line max-len
@@ -419,7 +419,8 @@ test("applyFormatDate, should return a correctly formatted date from date object
   const date = new Date(1365222221485);
   const dateFormatShort = "M/d/yy";
   
-  assert.strictEqual(simpletime.applyFormatDate(date, dateFormatShort), '4/5/13');
+  assert.strictEqual(
+    simpletime.applyFormatDate(date, dateFormatShort), '4/5/13');
 });
 
 // eslint-disable-next-line max-len
@@ -428,7 +429,8 @@ test("applyFormatDate, should return a correctly formatted date from date object
   const date = new Date(1365222221485);
   const dateFormatShort = "dd-MM-yyyy";
   
-  assert.strictEqual( simpletime.applyFormatDate(date, dateFormatShort), '05-04-2013');
+  assert.strictEqual(
+    simpletime.applyFormatDate(date, dateFormatShort), '05-04-2013');
 });
 
 // eslint-disable-next-line max-len
@@ -437,7 +439,8 @@ test("applyFormatDate, should return a correctly formatted date from date object
   const date = new Date(1365222221485);
   const dateFormatShort = "MMM d, y";
   
-  assert.strictEqual( simpletime.applyFormatDate(date, dateFormatShort), 'Apr 5, 2013');
+  assert.strictEqual(
+    simpletime.applyFormatDate(date, dateFormatShort), 'Apr 5, 2013');
 });
 
 // eslint-disable-next-line max-len
@@ -446,7 +449,8 @@ test("applyFormatDate, should return a correctly formatted date from date object
   const date = new Date(1365222221485);
   const dateFormatShort = "MMMM d, y";
   
-  assert.strictEqual( simpletime.applyFormatDate(date, dateFormatShort), 'April 5, 2013');
+  assert.strictEqual(
+    simpletime.applyFormatDate(date, dateFormatShort), 'April 5, 2013');
 });
 
 // eslint-disable-next-line max-len
@@ -455,7 +459,9 @@ test("applyFormatDate, should return a correctly formatted date from date object
   const date = new Date(1365222221485);
   const dateFormatShort = "d 'de' MMMM 'de' y";
   
-  assert.strictEqual( simpletime.applyFormatDate(date, dateFormatShort), "5 'de' April 'de' 2013");
+  assert.strictEqual(
+    simpletime.applyFormatDate(date, dateFormatShort),
+    "5 'de' April 'de' 2013");
 });
 
 // eslint-disable-next-line max-len
@@ -464,7 +470,9 @@ test("applyFormatDate, should return a correctly formatted date from date object
   const date = new Date(1365222221485);
   const dateFormatShort = "EEEE, d 'de' MMMM 'de' y";
   
-  assert.strictEqual( simpletime.applyFormatDate(date, dateFormatShort), "Friday, 5 'de' April 'de' 2013" );
+  assert.strictEqual(
+    simpletime.applyFormatDate(date, dateFormatShort),
+    "Friday, 5 'de' April 'de' 2013");
 });
 
 // eslint-disable-next-line max-len
@@ -473,7 +481,8 @@ test("applyFormatDate, should return a correctly formatted date from date object
   const date = new Date(1365222221485);
   const dateFormatShort = "EEEE, MMMM d, y";
   
-  assert.strictEqual( simpletime.applyFormatDate(date, dateFormatShort), "Friday, April 5, 2013");
+  assert.strictEqual(
+    simpletime.applyFormatDate(date, dateFormatShort), "Friday, April 5, 2013");
 });
 
 // eslint-disable-next-line max-len
@@ -484,11 +493,11 @@ test("getElapsedTime, should return an object whose properties describe elapsed 
   const newDate = new Date(1365404399998);
   const result = simpletime.getElapsedTimeObj(oldDate, newDate);
 
-  assert.strictEqual( result.ms === 554 && 
+  assert.strictEqual(result.ms === 554 && 
           result.sec === 14 &&
           result.min === 51 &&
           result.hour === 5 &&
-          result.day === 0 , true );
+          result.day === 0 , true);
 });  
 
 // eslint-disable-next-line max-len
@@ -498,7 +507,7 @@ test("isDatesInRange, should return true when dates are within the same day", ()
   //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
   const newDate = new Date(1365404399998);  
 
-  assert.strictEqual( simpletime.isDatesInRange(oldDate, newDate, 'day') , true );
+  assert.strictEqual(simpletime.isDatesInRange(oldDate, newDate, 'day') , true);
 });
 
 // eslint-disable-next-line max-len
@@ -508,7 +517,8 @@ test("isDatesInRange, should return false when dates are not within the same day
   //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
   const newDate = new Date(1365404399998);  
 
-  assert.strictEqual( simpletime.isDatesInRange(oldDate, newDate, 'day') , false );
+  assert.strictEqual(
+    simpletime.isDatesInRange(oldDate, newDate, 'day') , false);
 });
 
 // eslint-disable-next-line max-len
@@ -518,7 +528,8 @@ test("isDatesInRange, should return true when dates are within the same month", 
   //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
   const newDate = new Date(1365404399998);  
 
-  assert.strictEqual( simpletime.isDatesInRange(oldDate, newDate, 'month') , true );
+  assert.strictEqual(
+    simpletime.isDatesInRange(oldDate, newDate, 'month') , true);
 });
 
 // eslint-disable-next-line max-len
@@ -528,7 +539,8 @@ test("isDatesInRange, should return false when dates are within the different mo
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const newDate = new Date(1365222221485);
 
-  assert.strictEqual( simpletime.isDatesInRange(oldDate, newDate, 'month') , false );
+  assert.strictEqual(
+    simpletime.isDatesInRange(oldDate, newDate, 'month') , false);
 });
 
 // eslint-disable-next-line max-len
@@ -538,7 +550,8 @@ test("isDatesInRange, should return true when dates are within the same year", (
   //Sun Apr 07 2013 23:59:59 GMT-0700 (PDT)
   const newDate = new Date(1365404399998);  
 
-  assert.strictEqual( simpletime.isDatesInRange(oldDate, newDate, 'year') , true );
+  assert.strictEqual(
+    simpletime.isDatesInRange(oldDate, newDate, 'year') , true);
 });
 
 // eslint-disable-next-line max-len
@@ -548,14 +561,15 @@ test("isDatesInRange, should return false when dates are not within the same yea
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
   const newDate = new Date(1365222221485);
 
-  assert.strictEqual( simpletime.isDatesInRange(oldDate, newDate, 'year') , false );
+  assert.strictEqual(
+    simpletime.isDatesInRange(oldDate, newDate, 'year') , false);
 });
 
 // eslint-disable-next-line max-len
 test("extractDateFormatted, should return a correct date object form formatted date, full", () => {  
-  const date = new Date(1365308621485),
-        dateFormatLong = "MMMM d, y h:mm:ss a z",
-        dateFormatted = 'April 6, 2013 9:23:41 pm 485';
+  const date = new Date(1365308621485);
+  const dateFormatLong = "MMMM d, y h:mm:ss a z";
+  const dateFormatted = 'April 6, 2013 9:23:41 pm 485';
   
   assert.strictEqual(
     simpletime.extractDateFormatted(dateFormatted, dateFormatLong).getTime(),
@@ -565,9 +579,9 @@ test("extractDateFormatted, should return a correct date object form formatted d
 // eslint-disable-next-line max-len
 test("extractDateFormatted, should return a correct date object form formatted date, medium", () => {  
   //Fri Apr 05 2013 21:23:41 GMT-0700 (PDT)
-  const date = new Date(1365222221000),
-        dateFormatMedium = "MMM d, y h:mm:ss a",
-        dateFormatted = 'Apr 5, 2013 9:23:41 pm';
+  const date = new Date(1365222221000);
+  const dateFormatMedium = "MMM d, y h:mm:ss a";
+  const dateFormatted = 'Apr 5, 2013 9:23:41 pm';
 
   assert.strictEqual(
     simpletime.extractDateFormatted(dateFormatted, dateFormatMedium).getTime(),

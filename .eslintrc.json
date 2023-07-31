@@ -31,7 +31,13 @@
         "const": 3
       }
     }],
-    "camelcase": [2, {"properties": "never"}],
+    "camelcase": [2, {
+      "properties": "never",
+      "allow": [
+        "localeMethods_",
+        "timezone_mock"
+      ]
+    }],
     "func-names": [2, "never"],
     "newline-per-chained-call": 0,
     "max-len": [2, 80],
