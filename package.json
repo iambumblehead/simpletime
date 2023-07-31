@@ -1,11 +1,14 @@
 {
   "name": "simpletime",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "module": "simpletime.js",
   "license": "MIT",
   "readmeFilename": "README.md",
   "description": "Convert and manipulate various time formats..",
+  "exports": {
+    "import": "./simpletime.js"
+  },
   "files": [
     "simpletime.js"
   ],
