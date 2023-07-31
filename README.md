@@ -2,7 +2,7 @@ simpletime
 ==========
 **(c)[Bumblehead][0]**
 
-[![npm version](https://badge.fury.io/js/simpletime.svg)](https://badge.fury.io/js/simpletime) [![Build Status](https://travis-ci.org/iambumblehead/simpletime.svg?branch=master)](https://travis-ci.org/iambumblehead/simpletime)
+[![npm version](https://badge.fury.io/js/simpletime.svg)](https://badge.fury.io/js/simpletime) [![Build Status](https://github.com/iambumblehead/simpletime/workflows/nodejs-ci/badge.svg)][2]
 
 simpletime manages dates and renders them to unicode formats. (i18n through [worldtime][1]).
 
@@ -546,7 +546,7 @@ simpletime.getElapsedTimeObj(
 
 [3]: http://cldr.unicode.org/translation/date-time        "unicode"
 [7]: https://raw.githubusercontent.com/iambumblehead/es5classic/master/es5classic_120x120.png
-
+[2]: https://github.com/iambumblehead/simpletime "simpletime"
 
 ![scrounge](https://github.com/iambumblehead/scroungejs/raw/master/img/hand.png)[![es5 classic][7]][7]
 
