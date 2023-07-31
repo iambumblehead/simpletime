@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/iambumblehead/simpletime.git"
+    "url": "git+https://github.com/iambumblehead/simpletime.git"
   },
   "keywords": [
     "time",
