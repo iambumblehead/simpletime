@@ -23,9 +23,11 @@
     "unicode"
   ],
   "devDependencies": {
-    "timezone-mock": "^1.1.1"
+    "timezone-mock": "^1.1.1",
+    "eslint": "^8.0.1"
   },
   "scripts": {
+    "lint": "eslint .",
     "test": "node --test",
     "prepare": "npm test"
   }

@@ -1,16 +1,19 @@
 {
-  "plugins": [],
+  "extends": [],
   "env": {
     "browser": true
   },
-  "parser": "babel-eslint",
   "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": true
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
   "globals": {
-    "chrome": false,
-    "browser": false
+    "jasmine": false,
+    "beforeEach": false,
+    "describe": false,
+    "expect": false,
+    "spyOn": false,
+    "it": false
   },
   "rules": {
     "global-require": 0,
@@ -20,9 +23,7 @@
       "let": "always",
       "const": "never"
     }],
-
     "space-in-parens": [2, "never" ],
-    "import/newline-after-import": 0,
     "indent": [2, 2, {
       "flatTernaryExpressions": true,
       "VariableDeclarator": {
@@ -30,14 +31,17 @@
         "const": 3
       }
     }],
-    "camelcase": [0, {"properties": "never"}],
+    "camelcase": [2, {"properties": "never"}],
     "func-names": [2, "never"],
     "newline-per-chained-call": 0,
     "max-len": [2, 80],
     "comma-dangle": [2, "never"],
+    "prefer-template": 0,
+    "no-use-before-define": 0,
     "no-mixed-operators": 0,
     "no-plusplus": 0,
     "no-console": 0,
+    "object-curly-newline": 0,
     "nonblock-statement-body-position": 0,
     "arrow-parens": [2, "as-needed"],
     "space-before-function-paren": [2, "always"],
@@ -58,7 +62,6 @@
       "allowNamedFunctions": true
     }],
     "no-return-assign": 0,
-    "no-use-before-define": [2, "nofunc"],
     "no-nested-ternary": 0,
     "array-bracket-spacing": [2, "always"],
     "prefer-destructuring": 2,
