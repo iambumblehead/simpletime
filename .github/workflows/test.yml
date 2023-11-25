@@ -1,4 +1,4 @@
-name: lint
+name: test
 
 on:
   push:
@@ -7,11 +7,12 @@ on:
     branches: [ main ]
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
       with:
         node-version: 20
     - run: npm install
-    - run: npm run lint
+    - run: npm run build --if-present
+    - run: npm test
