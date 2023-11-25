@@ -7,11 +7,10 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - name: test
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       uses: actions/setup-node@v3
       with:
         node-version: 20
